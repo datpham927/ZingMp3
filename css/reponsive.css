@@ -99,12 +99,18 @@
         display: none;
        
     }
+    .zing-right{
+        margin:  0 40px;
+    }
     .zing-sidebar .zing-navar .zing-library-list 
     .zing-library-item .title{
         display: none;
     }
     .zing-library-title{
         white-space:nowrap;
+    }
+    .zingchart-body-main span{
+        font-size: 11px;
     }
     .action-zing-sidebar.zing-sidebar{
         width: 240px;
@@ -267,7 +273,7 @@
         height: 22vw;
       }
       .zing-result-list-item .zing-playList-body-left{
-        width: 50%;
+            width: 40%;
       }
       .action-add-playlist-mb.individual-ctn1-header-left{
             display: flex;

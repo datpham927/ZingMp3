@@ -60,6 +60,7 @@ const ZingSearch=$(".zing-search")
 
 var arrPlayList=[]
 var search=2
+var allPlayList=false
 const app={
     isShuffle:false,
     isRepeat:false,
@@ -68,7 +69,7 @@ const app={
     songSelection:0,
     playSong:false,
     isCheckBox:false,
-    allPlayList:false,
+   
     isVolume:false,
     volumeNumber:0,
     percent:0,
@@ -140,10 +141,9 @@ const app={
                                     infoSearch.style.background=`url(/background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
                                     $(".setting-list").style.background=`linear-gradient(0,rgba(225,225,225,0.1),rgba(225,225,225,0.2)),url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                                     if(index==3||index==4||index==5||index==6|index==7){
-                                        $(".background img").src=`./background/backroundThemes/${index}.jpg`
+                                        $(".background").style.backgroundImage=`url("/background/backroundThemes/${index}.jpg")`
                                         $(".zing-body-selector").classList.add("action-list-selection")
-                                        $(".background img").style.objectFit="cover"   
-                                        $(".zing-controls").style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
+                                        $(".zing-controls").style.background=`linear-gradient(0 ,rgba(225,225,225,0.2),rgba(225,225,225,0.2)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                         $$(".checkbox-wrapper ion-icon").forEach(item=>{
                                             item.style.color="#696969"
                                          })
@@ -169,8 +169,7 @@ const app={
                                     
                                     $(".progress").style.background="rgba(0, 0, 0, 0.1)"
                                     $(".volume-control").style.background="rgba(0, 0, 0, 0.1)"
-                                    $(".zing-sidebar").style.background="rgba(0, 0, 0, 0.1)"
-                                    $(".zing-controls").style.background=`linear-gradient(0 ,rgba(0, 0, 0, 0.05),rgba(0, 0, 0, 0.1)), url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
+                                    $(".zing-sidebar").style.background="rgba(0, 0, 0, 0.06)"
                                     $(".list-song-btn").style.background="rgba(0, 0, 0, 0.1)"
                                     $$(".zing-right-item").forEach((item)=>{
                                         item.style.background=`rgba(0, 0, 0, 0.1)`
@@ -184,11 +183,11 @@ const app={
 
                                     _this.isTheme=true
           
-                                }else{
+                                   }else{
                                     indexImg=index
                                     $(".zing-body-selector").classList.remove("action-list-selection")
-                                    $(".background img").src=`./background/backroundThemes/${index}.jpg`
-                                    $(".zing-controls").style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
+                                    $(".background").style.backgroundImage=`url("/background/backroundThemes/${index}.jpg")`
+                                    $(".zing-controls").style.background=`linear-gradient(0 ,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                     playListSongRight.style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                     $$(".checkbox-wrapper ion-icon").forEach(item=>{
                                         item.style.color="var(--color-small)"
@@ -223,13 +222,9 @@ const app={
                                         item.classList.remove("stroke-black")
                                     }
                                     if(index==0){
-                                        $(".background img").src=`./background/backroundThemes/0.svg`
-                                        $(".background img").style.objectFit="fill"
+                                        $(".background").style.backgroundImage=`url("/background/backroundThemes/0.svg")`
                                         playListSongRight.style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/0.svg")no-repeat center/cover`
                                         $(".zing-controls").style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/0.svg")no-repeat center/cover`
-                                    }else{
-                                        
-                                        $(".background img").style.objectFit="cover"   
                                     }
                                     
                                 }
@@ -766,7 +761,7 @@ const app={
                                                     <small class="color-small">${item.singer}</small>
                                             </div>
                                         </div>
-                                        <div class="zingchart-body-main l-0 color-small">
+                                        <div class="zingchart-body-main color-small">
                                                 <span>${item.title}</span>
                                                 <span>(singer)</span>
                                         </div>
@@ -892,6 +887,10 @@ const app={
                                                         <small class="color-small">${item.singer}</small>
                                                 </div>
                                             </div>
+                                             <div class="zingchart-body-main color-small">
+                                                    <span>${item.title}</span>
+                                                    <span>(singer)</span>
+                                            </div>
                                             <div class="zingchart-body-right">
                                                 <div class="zingchart-body-right-icon">
                                                     <div class="zingchart-icon icon-mic color-title">
@@ -966,9 +965,13 @@ const app={
                                     <span class="color-title">${item.title}</span>
                                     <small class="color-small">${item.singer}</small>
                             </div>
+                            <div class="zingchart-body-main  color-small">
+                                                    <span class="title">${item.title}</span>
+                                                    <span class="singer">(singer)</span>
+                            </div>
                             <div class="individual-ctn2-song-right color-main">
                                 <div class="individual-ctn2-song-right-icon">
-                                    <div class="icon-video c-0">
+                                    <div class="icon-video c-0 m-0">
                                         <ion-icon name="videocam"></ion-icon>
                                     </div>
                                     <div class="icon-favorite color-small "data-index=${index}>
@@ -980,11 +983,11 @@ const app={
                                         </div>
                                     </div>
                                 </div>
-                                <div class="song-time">
-                                    ${item.duration}
-                                </div>
-                                <div class="item color-main">
-                                      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                                <div class="time">
+                                    <div class="song-time">
+                                        ${item.duration}
+                                    </div>
+                                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                                 </div>
                             </div>
                         </li>            `  
@@ -1401,7 +1404,7 @@ const app={
                                 $$(".zingchart-body-left-song-item-img")[index].classList.remove("action-pause-music")
                             }
                         })
-                        if(_this.allPlayList){
+                        if(allPlayList){
                             _this.loadSongRight()
                         }else{
                             _this.loadPlayListTop_bottom()
@@ -1486,14 +1489,14 @@ const app={
            //  --------------- Chọn tất cả để thêm vào play list --------------
      
                 iconSelectionAll.onclick=function(){
-                    if(_this.allPlayList){
+                    if(allPlayList){
                         this.querySelector(".checkbox").classList.remove("action-checkbox")
                         $$(".individual-ctn2-song-item").forEach((item)=>{
                             item.classList.remove("music-color-selection-Checkbox")
                             item.querySelector(".checkbox-wrapper").classList.remove("checkBox-color-action")
                             item.querySelector(".checkbox-wrapper .checkbox").classList.remove("action-checkbox")
                             })
-                            _this.allPlayList=!_this.allPlayList
+                            allPlayList=!allPlayList
                     }else{
                         this.querySelector(".checkbox").classList.add("action-checkbox")
                         $$(".individual-ctn2-song-item").forEach((item)=>{
@@ -1501,7 +1504,7 @@ const app={
                             item.querySelector(".checkbox-wrapper").classList.add("checkBox-color-action")
                             item.querySelector(".checkbox-wrapper .checkbox").classList.add("action-checkbox")
                             })
-                            _this.allPlayList=!_this.allPlayList
+                            allPlayList=!allPlayList
                     }
                }
                btn_addPlayList.onclick=function(){
@@ -1518,8 +1521,9 @@ const app={
                         item.querySelector(".checkbox-wrapper .checkbox").classList.remove("action-checkbox")
                         item.classList.remove("music-color-selection-Checkbox")
                         item.classList.remove("music-color-selection")
-                        if(_this.allPlayList){
+                        if(allPlayList){
                             _this.loadSongRight();
+                            allPlayList=true
                         }else{
                             _this.loadPlayListTop_bottom()
                         }
@@ -1548,7 +1552,7 @@ const app={
               }
              //    ------- xóa danh sách --------
        
-       
+            $(".option-delete-playlist").onclick=()=>{$(".delete-playlist").classList.toggle("hide")}
      
              $(".delete-playlist").onclick=function(){
                 $(".list-empty").classList.remove("hide")
@@ -1561,7 +1565,6 @@ const app={
                      alert("Đã xóa thành công")
                  }
 
-                
                
     },
     handelPlayListSong:function(){
