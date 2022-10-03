@@ -687,7 +687,7 @@ const app={
                                                       <small class="color-small">${item.singer}</small>
                                               </div>
                                           </div>
-                                          <div class="zingchart-body-main zingchart-playList-body-main color-small">
+                                          <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
                                                       <span>${item.title}</span>
                                                       <span>(singer)</span>
                                           </div>
@@ -761,7 +761,7 @@ const app={
                                                     <small class="color-small">${item.singer}</small>
                                             </div>
                                         </div>
-                                        <div class="zingchart-body-main color-small">
+                                        <div class="zingchart-body-main color-small c-0">
                                                 <span>${item.title}</span>
                                                 <span>(singer)</span>
                                         </div>
@@ -887,7 +887,7 @@ const app={
                                                         <small class="color-small">${item.singer}</small>
                                                 </div>
                                             </div>
-                                             <div class="zingchart-body-main color-small">
+                                             <div class="zingchart-body-main color-small c-0">
                                                     <span>${item.title}</span>
                                                     <span>(singer)</span>
                                             </div>
@@ -965,7 +965,7 @@ const app={
                                     <span class="color-title">${item.title}</span>
                                     <small class="color-small">${item.singer}</small>
                             </div>
-                            <div class="zingchart-body-main  color-small">
+                            <div class="zingchart-body-main  color-small c-0">
                                                     <span class="title">${item.title}</span>
                                                     <span class="singer">(singer)</span>
                             </div>
@@ -1026,7 +1026,7 @@ const app={
                                     <small class="color-small">${item.singer}</small>
                             </div>
                         </div>
-                        <div class="zingchart-body-main zingchart-playList-body-main color-small">
+                        <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
                                     <span>${item.title}</span>
                                     <span>(singer)</span>
                         </div>
@@ -1079,7 +1079,7 @@ const app={
                                       <small class="color-small">${item.singer}</small>
                               </div>
                           </div>
-                          <div class="zingchart-body-main zingchart-playList-body-main color-small">
+                          <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
                                       <span>${item.title}</span>
                                       <span>(singer)</span>
                           </div>
@@ -1132,7 +1132,7 @@ const app={
                                   <small class="color-small">${item.singer}</small>
                           </div>
                       </div>
-                      <div class="zingchart-body-main zingchart-playList-body-main color-small">
+                      <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
                                   <span>${item.title}</span>
                                   <span>(singer)</span>
                       </div>
