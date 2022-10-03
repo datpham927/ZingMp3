@@ -141,7 +141,7 @@ const app={
                                     infoSearch.style.background=`url(/background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
                                     $(".setting-list").style.background=`linear-gradient(0,rgba(225,225,225,0.1),rgba(225,225,225,0.2)),url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                                     if(index==3||index==4||index==5||index==6|index==7){
-                                        $(".background").style.backgroundImage=`url("/background/backroundThemes/${index}.jpg")`
+                                        $(".background").style.backgroundImage=`url("../background/backroundThemes/${index}.jpg")`
                                         $(".zing-body-selector").classList.add("action-list-selection")
                                         $(".zing-controls").style.background=`linear-gradient(0 ,rgba(225,225,225,0.2),rgba(225,225,225,0.2)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                         $$(".checkbox-wrapper ion-icon").forEach(item=>{
@@ -186,7 +186,7 @@ const app={
                                    }else{
                                     indexImg=index
                                     $(".zing-body-selector").classList.remove("action-list-selection")
-                                    $(".background").style.backgroundImage=`url("/background/backroundThemes/${index}.jpg")`
+                                    $(".background").style.backgroundImage=`url("../background/backroundThemes/${index}.jpg")`
                                     $(".zing-controls").style.background=`linear-gradient(0 ,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                     playListSongRight.style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                     $$(".checkbox-wrapper ion-icon").forEach(item=>{
