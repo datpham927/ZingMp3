@@ -302,6 +302,7 @@
 @media (max-width:740px) {
     .zing-main{
         width: 100%;
+        background-color: rgba(225,225,225,0.05);
     }
         .zing{
        position: relative;
@@ -313,7 +314,7 @@
       bottom: 0;
       height: var(--height-footer);
       left: 0;
-      background: url("../background/modalThemes/modalTheme3/theme2.jpg") center/cover no-repeat;
+      background:linear-gradient(0 ,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("../background/backroundThemes/2.jpg");
      
     }
     .zing-navbar-item-mb{
@@ -334,7 +335,7 @@
     .zing-navbar-item-mb .footer-item-mb .title{
         font-size: 12px;
   }
-    .zing-navbar-item-mb.action-song{
+    .action-song{
         border: none;
         opacity: 1;
     }
@@ -361,24 +362,40 @@
         width: 100%;
         height: 100%;
         background:url("../background/modalThemes/modalTheme3/theme2.jpg") center/cover no-repeat;
+        transition: 0.4s linear;
+        z-index: 2;
+        transform: translateY(100%);
     }
+   
+
+.zing-controls-mb-open{
+    transform: translateY(0);
+    animation: controls 0.4s linear ;
+}
+
     .control-left-img{
         width: 40px;
         height: 40px;
     }
 .control-left-img-mb{
     position: relative;
-    width: 70vw;
-    height: 70vw;
+    width: 60vw;
+    height: 60vw;
     border-radius: 100%;
     border: 2px solid violet;
     overflow: hidden;
     margin: 20px auto;
 }
+.zing-control-right-mb-left{
+    display: flex;
+    align-items: center;
+}
 .control-left-title-mb {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+}
+.control-left-title-mb .icon{
+    width: 30px;
 }
 .control-left-img-mb img{
     width: 100%;
@@ -416,12 +433,25 @@
 }
 .progress-mb{
    width: 70%;
-   height: 4px;
-   background-color: aqua;
+   height: 6px;
+   border-radius: 20px;
+   background-color:antiquewhite;
+}
+
+.progressCurrent-mb{
+    position: relative;
+    width: 0%;
+    height: 100%;
+    z-index: 2;
+    border-radius: 20px;
+    background-color:#B567D9 ;
 }
 .play-music-mb ion-icon,
 .pause-music-mb ion-icon{
     font-size: 70px;
+}
+.play-music-mb {
+    height: 70px;
 }
 .time-begin-mb{
     display: flex;
@@ -432,6 +462,7 @@
 }
 .zing-controls{
     padding: 0 10px;
+    z-index: 2;
     height: var(--height-footer);
 }
 .zing-controls-mb {
@@ -440,6 +471,7 @@
 }
 .zing-control-right-mb{
     display: flex;
+    padding: 0 5px;
     justify-content: space-between;
     align-items: center;
 }
@@ -586,7 +618,7 @@
 }
 .individual-ctn2-song-title span,
 .individual-ctn2-song-title small{
-    width: 150px;
+    width: 80%;
 }
 .zingchart-footer-topic{
     font-size: 20px;
@@ -605,14 +637,127 @@
 .zing-search input{
     text-overflow: ellipsis
 }
+.zing-result-border{
+   padding: 10px 20px;
+}
 
+.icon{
+    width: 20px;
+}
+.song-time{
+    font-size: 12px;
+}
+.zingchart-icon{
+    margin: 0 10px;
+}
 
+.zingchart-footer--body-left{
+    flex: 1;
+}
+.individual-ctn1-header{
+   margin: 20px 0 10px 0;
+}
+.individual-ctn1-header-left .btn{
+    font-size: 12px;
+    padding: 5px;
+}
+.individual-ctn2-song-list{
+    padding: 0 10px;
+}
+.individual-ctn1-header-left h1{
+    margin-left: 20px;
+}
+.discover-ctn2-album, .discover-ctn2-body{
+    margin-top: 20px;
+    height: 300px;
+    width: auto;
+    padding: 0;
+    overflow: hidden;
+    -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
+    scrollbar-width: none;
+    overflow-y: scroll; 
+}
+.vip-ctn-btn {
+    font-size: 12px;
+    width: 200px;
+    margin: auto;
+    margin-top: 10px;
 
+}
+.info-search-main{
+  max-height: 300px;
+}
+.zing-playList{
+    padding: 20px;
+    display: block;
+}
+.zing-playlist-img{
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
 
+.zing-playList-right{
+    padding-left: 0;
+}
 
+.zing-playlist-icon-pause ion-icon {
+    height: 100%;
+}
+.icon.action-hover{
+    background:none;
+}
 
+.action-theme{
+    display: none;
+}
+.discover-ctn1-mb{
+    width: 100%;
+    height: 55vw;
+    padding: 20px;    
+}
+.discover-ctn1-mb-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+}
+.discover-ctn1-mb-img .img{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width:100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: 0.4s linear;
+}
 
+.discover-ctn1-mb-third{
+   transform: translateX(100%);
+}
+.discover-ctn1-mb-second{
+    transform: translateX(0);
+ }
 
+ .discover-ctn1-mb-first{
+    transform: translateX(-100%);
+ }
+ .overflow-pc{
+     overflow: auto;
+ }
 
-
+ .RadioCtn-ctn3 .Category .body{
+    padding: 0 5px;
+      flex-wrap: wrap;
+ }
+ .Category-img{
+   padding: 5px;
+ }
+ .RadioCtn-ctn3 .Category .header{
+      padding: 20px 10px;
+ }
 }

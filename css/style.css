@@ -761,6 +761,9 @@ html{
 .icon-favorite{
     margin: 0 5px;
 }
+.icon-tym ion-icon{
+    font-size: 20px;
+}
 .individual-ctn2-song-item:hover .icon-video{
     opacity: 1;
     transform: translateX(10px);
@@ -1048,7 +1051,8 @@ html{
     background-color:black;
     z-index:300;
     align-items: center;
-    background:linear-gradient(0 ,rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url("../background/backroundThemes/2.jpg")no-repeat center/cover;
+    cursor: pointer;
+    background:linear-gradient(0 ,rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("../background/backroundThemes/2.jpg")no-repeat center/cover;
     animation: controls 0.4s linear ;
 }
 @keyframes controls{
@@ -1060,6 +1064,10 @@ html{
         opacity: 1;
     }
     
+}
+.repeat,
+.icon-shuffle{
+    color: white;
 }
 .zing-control-left{
     padding-left: 15px;
@@ -1173,7 +1181,8 @@ html{
   align-items: center;
   margin: auto;
   cursor: pointer;
-}.action-play-icon .play-music-mb,
+}
+.action-play-icon .play-music-mb,
 .action-play-icon .play-music{
  display: none;
 }
@@ -1587,9 +1596,9 @@ background-color: var(--background-while);
 }
 .discover-ctn1{
     position: relative;
-    margin: 20px 0;
+    margin-top: 20px;
     width: 100%;
-    height: 161px;
+    height: 16vw;
 }
 .discover-ctn1-list{
     width: 100%;
@@ -1950,6 +1959,7 @@ background-color: var(--background-while);
     margin-top: 10px;
     font-size: 14px;
     padding: 8px 0;
+    background-color: #FFDB00;
 }
 
 .vip-ctn-icon{
@@ -2102,7 +2112,8 @@ background-color: var(--background-while);
 
 
 .zingchartCtn-play{
-  display: flex;
+    display: flex;
+    color: white;
 }
 .zingchartCtn-play ion-icon{
     font-size: 20px;
@@ -2188,23 +2199,35 @@ background-color: var(--background-while);
 }
 
 .zingchart-body-right-icon{
-    display: none;
+    display: flex;
 }
 
 .zingchart-icon{
     margin: 0 20px;
+    display: none;
 }
 
 .zingchart-song-time{
   font-size: 12px;
-  margin-right: 10px;
+  margin: 0 12px;
 }
 
-.zingchart-body-item:hover .zingchart-body-right-icon{
+.zingchart-body-item:hover .zingchart-icon{
    display: flex;
 }
-
 .zingchart-body-item:hover .zingchart-song-time{
+    display: none;
+ }
+ .zingchart-body-item:hover  .yes-favorite{
+    display: none;
+ }
+ .zingchart-body-item:hover  .no-favorite{
+    display: block;
+ }
+ .zingchart-body-item:hover  .action-favorite .yes-favorite{
+    display: block;
+ }
+ .zingchart-body-item:hover .action-favorite .no-favorite{
     display: none;
  }
 
@@ -2249,7 +2272,7 @@ background-color: var(--background-while);
 }
 
 .zingchart-footer--body-left{
-    width: 150px;
+    width: 100%;
 }
 .zingchart-footer-item .zingchart-number{
     margin: 0;
@@ -2805,7 +2828,9 @@ background-color: var(--background-while);
   width: 100%;
 }
 
-
+.icon-favorite.action-favorite{
+    display: flex;
+}
 
 
 
@@ -2896,3 +2921,6 @@ li{
  background-color: rgba(0, 0, 0, 0.1);
 }
 
+.overflow-pc{
+   overflow: hidden;
+}
