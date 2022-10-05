@@ -8,8 +8,8 @@ const $$=document.querySelectorAll.bind(document)
 const topic=$(".zing-header-topic")
 const modalTopic=$(".modal-topic")
 const modal=$(".modal")
-const closeModal=$(".icon-close")
 const listTheme=$$(".topic-theme")
+const closeModal=$(".topic-header .icon-close")
 const avatarImg=$(".zing-body-avatar a")
 const individual_ctn2=$(".individual-ctn2")
 const individual_ctn3=$(".individual-ctn3")
@@ -159,7 +159,6 @@ const app={
                                     $(".setting-list").style.background=`linear-gradient(0,rgba(225,225,225,0.1),rgba(225,225,225,0.2)),url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                                     if(index==3||index==4||index==5||index==6||index==7){
                                             isTheme=true
-                                          
                                             $(".background").style.backgroundImage=`url("../background/backroundThemes/${index}.jpg")`
                                             $(".footer-mb").style.background=`linear-gradient(0 ,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url("../background/backroundThemes/${index}.jpg")`
                                             $(".zing-body-selector").classList.add("action-list-selection")
@@ -269,6 +268,8 @@ const app={
                         $(".zing-sidebar-mb").style.background=`url("./background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                 }
             }
+
+           
            //   -------- khi lướt --------
            $(".zing-main").onscroll=function(e){
               let target=e.target.scrollTop
@@ -307,11 +308,11 @@ const app={
              modal.classList.add("hide")
           }
          }
-         closeModal.onclick=()=>{
-             modalTopic.classList.add("hide")
-             modal.classList.add("hide")
-         }
-     },
+    closeModal.onclick=()=>{
+        modalTopic.classList.add("hide")
+        modal.classList.add("hide")
+    }
+ },
      isPlayList:true,
      isFavorite:true,
   
@@ -2514,7 +2515,7 @@ const app={
         }
        })
        const album =_this.songs.map((item,index)=>{
-        if( index>22 && index<=31){
+        if( index>23 && index<=32){
             return `
                     <div class="l-4 m-6 c-12">
                     <div class="the-song discover-ctn2-album-song">
