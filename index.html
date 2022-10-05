@@ -15,9 +15,7 @@
 </head>
 <body>
     <div id="app">
-         <diz class="background"> 
-            <!-- <img src="./background/backroundThemes/2.jpg" alt=""> -->
-         </diz>
+         <diz class="background"></diz>
 
          <div class="grid">
                 <div class="zing">
@@ -235,7 +233,8 @@
                                     <span>Chủ đề</span>
                                 </div>
                                 <div class="zing-right-item zing-header-upload color-main c-0">
-                                    <ion-icon name="cloud-upload-outline"></ion-icon>
+                                    <label for="upload"><ion-icon name="cloud-upload-outline"></ion-icon></label>
+                                      <input type="file" hidden id="upload">
                                 </div>
                                 <div class="zing-right-item zing-header-settings color-main c-0">
                                     <ion-icon name="settings"></ion-icon>
@@ -281,7 +280,7 @@
                                 </div>
                                 
                                 <div class="zing-right-item">
-                                    <img class="avatar" src="http://www.chuahoangphap.com.vn/Images/News/hoangphap_que-huong_full_29562018_095654.jpg" alt="">
+                                    <img class="avatar" src="./img/avatar/1.jpg" alt="">
                                 </div>
                             </div>
                             
@@ -292,10 +291,10 @@
                             <!-- ------------- cá nhân ---------- -->
                             <div class="individual">
                                 <div class="zing-body-avatar">
-                                    <a href="/">
-                                        <img class="avatar" src="http://www.chuahoangphap.com.vn/Images/News/hoangphap_que-huong_full_29562018_095654.jpg" alt="">
+                                    <a href="https://www.facebook.com/profile.php?id=100012882123870">
+                                        <img class="avatar" src="./img/avatar/1.jpg" alt="">
                                     </a>
-                                    <h1 class="color-title">Huỳnh Diễm Chiêu</h1>
+                                    <h1 class="color-title">Đạt Phạm</h1>
                                 </div>
                                 <div class="zing-body-selector">
                                     <div class="list">
@@ -1072,6 +1071,10 @@
                             <span>Hết nhạc rùi bạn ơi :)) </span>
                         </div>
                     </div>
+                    <div class="icon-close color-main l-0 m-00">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </div>
+                    
                 </div>
                 <div class="zing-controls hide">
                     <div class="audio">
@@ -1085,6 +1088,14 @@
                             <div class="control-left-title">
                                 <h1 class="color-title"></h1>
                                 <small class="color-small"></small>
+                            </div>
+                            <div class="icon-favorite color-small "data-index=${index}>
+                                <div class="no-favorite zingchart-icon icon-tym action-hover">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </div>
+                                <div class="yes-favorite zingchart-icon icon-tym action-hover">
+                                     <ion-icon name="heart"></ion-icon>
+                                </div>
                             </div>
                             <div class="control-left-icon m-0">
                                 <div class="item icon action-hover  color-title m-0 ">
@@ -1268,7 +1279,7 @@
                         <div class="topic-title"><h1 class="color-main">Dynamic</h1></div>
                         
                         <div class="topic-body-list">
-                            <div class="l-2-4 c-6 topic-theme" data-index="1">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="1">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme1/theme1.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1278,7 +1289,7 @@
                                 </div>
                                 <small class="color-main">Zing Music Awards</small>
                             </div>
-                            <div class="l-2-4 c-6 topic-theme" data-index="2">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="2">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme1/theme2.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1293,7 +1304,7 @@
                         <div class="topic-title"><h1 class="color-main">Chủ đề</h1></div>
                       
                         <div class="topic-body-list">
-                            <div class="l-2-4 c-6 topic-theme" data-index="3">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="3">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme2/theme1.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1303,7 +1314,7 @@
                                 </div>
                                 <small class="color-main">Rosé</small>
                             </div>
-                            <div class="l-2-4 c-6 topic-theme" data-index="4">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="4">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme2/theme2.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1313,7 +1324,7 @@
                                 </div>
                                 <small class="color-main">IU</small>
                             </div>
-                            <div class="l-2-4 c-6 topic-theme" data-index="5">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="5">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme2/theme3.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1328,7 +1339,7 @@
                         <div class="topic-title"><h1 class="color-main">Nghệ sĩ</h1></div>
                       
                         <div class="topic-body-list">
-                            <div class="l-2-4 c-6 topic-theme" data-index="6">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="6">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme2/theme4.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1338,7 +1349,7 @@
                                 </div>
                                 <small class="color-main">Lisa</small>
                             </div>
-                            <div class="l-2-4 c-6 topic-theme" data-index="7">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="7">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme2/theme5.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1348,7 +1359,7 @@
                                 </div>
                                 <small class="color-main">Jennie Kim</small>
                             </div>
-                            <div class="l-2-4 c-6 topic-theme" data-index="8">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="8">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme2/theme6.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1359,7 +1370,7 @@
                                 <small class="color-main">Jisoo</small>
                             </div>
 
-                            <div class="l-2-4 c-6 topic-theme" data-index="9">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="9">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme2/theme7.jpg" alt="">
                                     <div class="action-theme m-0 c-0">
@@ -1376,7 +1387,7 @@
                       
                          <div class="topic-body-list hide">
                              
-                             <div class="l-2-4 c-6 topic-theme" data-index="10">
+                             <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="10">
                                  <div class="topic-theme-img">
                                      <img src="./background/modalThemes/modalTheme3/theme1.jpg" alt="">
                                      <div class="action-theme m-0 c-0">
@@ -1386,7 +1397,7 @@
                                     </div>
                                  <small class="color-small">London</small>
                              </div>
-                             <div class="l-2-4 c-6 topic-theme" data-index="11">
+                             <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="11">
                                  <div class="topic-theme-img">
                                      <img src="./background/modalThemes/modalTheme3/theme2.jpg" alt="">
                                      <div class="action-theme m-0 c-0">
@@ -1402,7 +1413,7 @@
                       
                          <div class="topic-body-list hide">
                              
-                             <div class="l-2-4 c-6 topic-theme" data-index="12">
+                             <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="12">
                                  <div class="topic-theme-img">
                                      <img src="./background/modalThemes/modalTheme3/theme3.jpg" alt="">
                                      <div class="action-theme m-0 c-0">
@@ -1412,7 +1423,7 @@
                                     </div>
                                  <small class="color-small">Tối</small>
                              </div>
-                             <div class="l-2-4 c-6 topic-theme" data-index="13">
+                             <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="13">
                                  <div class="topic-theme-img">
                                      <img src="./background/modalThemes/modalTheme3/theme4.jpg" alt="">
                                      <div class="action-theme m-0">
@@ -1422,7 +1433,7 @@
                                     </div>
                                  <small class="color-small">Tím</small>
                              </div>
-                             <div class="l-2-4 c-6 topic-theme" data-index="14">
+                             <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="14">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme3/theme5.jpg" alt="">
                                     <div class="action-theme m-0">
@@ -1432,7 +1443,7 @@
                                 </div>
                                 <small class="color-small">Xanh Đậm</small>
                             </div>
-                            <div class="l-2-4 c-6 topic-theme" data-index="15">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="15">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme3/theme6.jpg" alt="">
                                     <div class="action-theme m-0">
@@ -1442,7 +1453,7 @@
                                 </div>
                                 <small class="color-small">Xanh Biển</small>
                             </div>
-                            <div class="l-2-4 c-6 topic-theme" data-index="16">
+                            <div class="l-2-4 c-6 m-2-4 topic-theme" data-index="16">
                                 <div class="topic-theme-img">
                                     <img src="./background/modalThemes/modalTheme3/theme7.jpg" alt="">
                                     <div class="action-theme m-0">
@@ -1471,7 +1482,8 @@
                     </div>
                </div>
        </div>
-        </div>
+
+   </div>
    
 
 

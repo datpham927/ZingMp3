@@ -70,11 +70,12 @@ const ZingSearch=$(".zing-search")
 var arrPlayList=[]
 var search=2
 var allPlayList=false
-var isTheme=false;
-var isShuffle=false;
-var isRepeat=false;
+var isTheme=false
+var isShuffle=false
+var isRepeat=false
+
+var currentIndex=0
 const app={
-    currentIndex:0,
     currentIndex_PlayList:0,
     songSelection:0,
     playSong:false,
@@ -87,9 +88,17 @@ const app={
     playListUS:false,
     zingSearch:false,
     isMenu:0,
-      // ======================================
-      indexDiscover:0,
-  
+
+    // ======================================
+    indexDiscover:0,
+    // ---------------------------
+    config:JSON.parse(localStorage.getItem("keys")) || {},
+
+    setConfig:function(key,value){
+        this.config[key]=value
+        localStorage.setItem("keys",JSON.stringify(this.config))
+    },
+    
       randerSlide:[
           { img:"./img/slider/0.webp" },
           { img:"./img/slider/1.webp" },
@@ -308,18 +317,25 @@ const app={
   
     songs:[
         {
-            title:"Lỡ Hẹn Với Dòng Lam",
-            singer:"Thái Học",
-            pathSong:"./music/list-song/lhdsl.mp3",
-            duration:"05:43",
-            img:"https://i.ytimg.com/vi/HELjXqg9Ht0/mqdefault.jpg"
+            title:"CÓ CHƠI CÓ CHỊU",
+            singer:"KARIK x ONLY C",
+            pathSong:"./music/list-song/KARIK x ONLY C - CÓ CHƠI CÓ CHỊU (OFFICIAL MUSIC VIDEO).mp3",
+            duration:"04:46",
+            img:"https://vtv1.mediacdn.vn/thumb_w/640/2022/9/21/poster-karik-only-c-16637279213761078057270.jpeg"
+        },
+        { 
+            img:"./img/discover/ctn2/1.webp",
+            title:"Waiting For You",
+            singer:"MONO",
+            pathSong:"./music/vip/WaitingForYou.mp3" ,
+            duration:"04:25"
         },
         {
             title:"Cơn Mưa Băng Giá",
             singer:"Noo Phước Thịnh",
             pathSong:"./music/list-song/cmbg.mp3",
             duration:"04:41",
-            img:"https://1.bp.blogspot.com/-hJTd5K2_TVg/YSLqmi3Er7I/AAAAAAAATyY/rsWzPhqTZuU7ukFTNcadK7zzG41ccWdJgCNcBGAsYHQ/s0/hayvnnet-o-day-co-nhieu-gai-xinh-dang-dep-%2B%25281%2529.jpg"
+            img:"https://tse1.mm.bing.net/th?id=OIP.hSgGC0yJ6GeY8IE1GDTW6gHaFi&pid=Api&P=0"
         },  
         {
             title:"Em Là Con Thuyền Cô Đơn",
@@ -480,6 +496,13 @@ const app={
             type:"vip",
             duration:"04:06"            
         },
+          {
+            title:"Lỡ Hẹn Với Dòng Lam",
+            singer:"Thái Học",
+            pathSong:"./music/list-song/lhdsl.mp3",
+            duration:"05:43",
+            img:"https://tse2.mm.bing.net/th?id=OIP.wQ8YaC8YRnibBMiypyK0XwEsEs&pid=Api&P=0"
+        },
         { 
             img:"./img/discover/ctn2/1.webp",
             title:"Waiting For You",
@@ -623,7 +646,7 @@ const app={
         },
         // ------------- us -------------------
         { 
-            img:"./img/playListSongs/tshk.jfif",
+            img:"https://m.media-amazon.com/images/M/MV5BMjE5MzcyNjk1M15BMl5BanBnXkFtZTcwMjQ4MjcxOQ@@._V1_.jpg",
             title:"Unstoppable",
             singer:"Sia",
             time:"6 ngày trước",
@@ -682,7 +705,7 @@ const app={
                         const recentlyItem=e.target.closest(".recently-song-item")
                         if(recentlyItem){
                             const index =e.target.closest(".recently-song-item").getAttribute("data-index")
-                            _this.currentIndex=index
+                            currentIndex=index
                             _this.loadCurrentSong()
                             const html=_this.songs.map((item,i)=>{
                                 if(i==index){
@@ -710,9 +733,9 @@ const app={
                                                       <small class="color-small">${item.singer}</small>
                                               </div>
                                           </div>
-                                          <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
-                                                      <span>${item.title}</span>
-                                                      <span>(singer)</span>
+                                          <div class="zingchart-body-main  color-small c-0">
+                                                <span class="title">${item.title}</span>
+                                                <span class="singer">(singer)</span>
                                           </div>
                                           <div class="zingchart-body-right">
                                               <div class="zingchart-body-right-icon">
@@ -790,9 +813,9 @@ const app={
                                                         <small class="color-small">${item.singer}</small>
                                                 </div>
                                             </div>
-                                        <div class="zingchart-body-main color-small c-0">
-                                                <span>${item.title}</span>
-                                                <span>(singer)</span>
+                                        <div class="zingchart-body-main  color-small c-0 l-0">
+                                            <span class="title">${item.title}</span>
+                                            <span class="singer">(singer)</span>
                                         </div>
                                         <div class="zingchart-body-right">
                                             <div class="zingchart-body-right-icon">
@@ -837,7 +860,7 @@ const app={
         $(".zing-result-list").ondblclick=function(e){
             const target=e.target.closest(".zing-result-list-item")
             if(target){
-                _this.currentIndex=target.getAttribute("data-index")
+                currentIndex=target.getAttribute("data-index")
                 _this.loadCurrentSong()
                 _this.loadColorSearch($$(".zing-result-list-item"))
                 $(".zing-result").classList.remove("hide")
@@ -922,9 +945,9 @@ const app={
                                                         <small class="color-small">${item.singer}</small>
                                                 </div>
                                             </div>
-                                             <div class="zingchart-body-main color-small c-0">
-                                                    <span>${item.title}</span>
-                                                    <span>(singer)</span>
+                                            <div class="zingchart-body-main  color-small c-0 l-0">
+                                                    <span class="title">${item.title}</span>
+                                                    <span class="singer">(singer)</span>
                                             </div>
                                             <div class="zingchart-body-right">
                                                 <div class="zingchart-body-right-icon">
@@ -955,6 +978,7 @@ const app={
                          })
                          $(".zing-result-list").innerHTML=lists.join("")
                          $(".zing-result").classList.remove("hide")
+                         $(".zing-playList").classList.add("hide")
                          individual.classList.add("hide")
                          discover.classList.add("hide")
                          zingchart.classList.add("hide")
@@ -969,7 +993,7 @@ const app={
    loadColorSearch:function(object){
         object.forEach((item)=>{
         const index =item.getAttribute("data-index")
-        if(index == this.currentIndex){
+        if(index == currentIndex){
             item.classList.add("music-color")
             item.classList.add("action-play-music")
         }else{
@@ -1007,8 +1031,8 @@ const app={
                                     <small class="color-small">${item.singer}</small>
                             </div>
                             <div class="zingchart-body-main  color-small c-0">
-                                                    <span class="title">${item.title}</span>
-                                                    <span class="singer">(singer)</span>
+                                    <span class="title">${item.title}</span>
+                                    <span class="singer">(singer)</span>
                             </div>
                             <div class="individual-ctn2-song-right color-main">
                                 <div class="individual-ctn2-song-right-icon">
@@ -1067,10 +1091,10 @@ const app={
                                     <small class="color-small">${item.singer}</small>
                             </div>
                         </div>
-                        <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
-                                    <span>${item.title}</span>
-                                    <span>(singer)</span>
-                        </div>
+                        <div class="zingchart-body-main  color-small c-0">
+                                            <span class="title">${item.title}</span>
+                                            <span class="singer">(singer)</span>
+                            </div>
                         <div class="zingchart-body-right">
                             <div class="zingchart-body-right-icon">
                                 <div class="zingchart-icon icon-mic color-title">
@@ -1125,10 +1149,10 @@ const app={
                                       <small class="color-small">${item.singer}</small>
                               </div>
                           </div>
-                          <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
-                                      <span>${item.title}</span>
-                                      <span>(singer)</span>
-                          </div>
+                          <div class="zingchart-body-main  color-small c-0">
+                                            <span class="title">${item.title}</span>
+                                            <span class="singer">(singer)</span>
+                            </div>
                           <div class="zingchart-body-right">
                               <div class="zingchart-body-right-icon">
                                   <div class="zingchart-icon icon-mic color-title">
@@ -1184,9 +1208,9 @@ const app={
                                   <small class="color-small">${item.singer}</small>
                           </div>
                       </div>
-                      <div class="zingchart-body-main zingchart-playList-body-main color-small c-0">
-                                  <span>${item.title}</span>
-                                  <span>(singer)</span>
+                      <div class="zingchart-body-main  color-small c-0">
+                           <span class="title">${item.title}</span>
+                           <span class="singer">(singer)</span>
                       </div>
                       <div class="zingchart-body-right">
                           <div class="zingchart-body-right-icon">
@@ -1233,7 +1257,7 @@ const app={
           listSongs.forEach((item,index)=>{
             item.ondblclick=function(){
                 animationImg.play()
-                _this.currentIndex=index
+                currentIndex=index
                 _this.loadCurrentSong();
                 audio.play()
                 _this.deleteColorMusic=false
@@ -1254,7 +1278,7 @@ const app={
           })
          
           listSongs.forEach((item,index)=>{
-            if(!index==_this.currentIndex){
+            if(!index==currentIndex){
                 item.querySelector(".individual-ctn2-song-item-img").classList.remove("action-play-music")
                 item.querySelector(".individual-ctn2-song-item-img").classList.remove("action-pause-music")
             }
@@ -1271,7 +1295,7 @@ const app={
                 }
                 if(e.target.closest(".individual-ctn2-song-item-icon")){
                     let index=Number(e.target.closest(".individual-ctn2-song-item-icon").getAttribute("data-index"))
-                    _this.currentIndex=index
+                    currentIndex=index
                     _this.loadCurrentSong();
                     _this.changerMusic=true
                     audio.play()
@@ -1330,12 +1354,12 @@ const app={
                     if(isShuffle){
                        _this.random()
                     }else{
-                        _this.currentIndex--;
-                        if( _this.currentIndex<0){
-                            _this.currentIndex=_this.songs.length-1
+                        currentIndex--;
+                        if( currentIndex<0){
+                            currentIndex=_this.songs.length-1
                         }
                     }
-                    _this.songSelection=_this.currentIndex;
+                    _this.songSelection=currentIndex;
                     _this.colorMusicSelection()
                     _this.loadCurrentSong();
                     audio.play()
@@ -1344,12 +1368,12 @@ const app={
                     if(isShuffle){
                         _this.random()
                      }else{
-                         _this.currentIndex++;
-                        if( _this.currentIndex>_this.songs.length-1){
-                              _this.currentIndex=0
+                         currentIndex++;
+                        if( currentIndex>_this.songs.length-1){
+                              currentIndex=0
                        }
                    }
-                    _this.songSelection=_this.currentIndex;
+                    _this.songSelection=currentIndex;
                     _this.colorMusicSelection()
                     _this.loadCurrentSong();
                     audio.play()
@@ -1358,6 +1382,7 @@ const app={
                 iconRepeat.onclick=function(){
                     isRepeat=!isRepeat;
                     this.classList.toggle("action-controls",isRepeat)
+                    _this.setConfig("isRepeat",isRepeat)
                     if(isRepeat){
                         if(isTheme==false){
                             iconRepeat.style.color="var(--color-pink)"
@@ -1376,6 +1401,7 @@ const app={
                 iconShuffle.onclick=function(){
                     isShuffle=!isShuffle;
                     this.classList.toggle("action-controls",isShuffle)
+                    _this.setConfig("isShuffle",isShuffle)
                     if(isShuffle){
                         if(isTheme==false){
                             iconShuffle.style.color="var(--color-pink)"
@@ -1403,12 +1429,12 @@ const app={
                     if(isShuffle){
                        _this.random()
                     }else{
-                        _this.currentIndex--;
-                        if( _this.currentIndex<0){
-                            _this.currentIndex=_this.songs.length-1
+                        currentIndex--;
+                        if( currentIndex<0){
+                            currentIndex=_this.songs.length-1
                         }
                     }
-                    _this.songSelection=_this.currentIndex;
+                    _this.songSelection=currentIndex;
                     _this.colorMusicSelection()
                     _this.loadCurrentSong();
                     audio.play()
@@ -1417,12 +1443,12 @@ const app={
                     if(isShuffle){
                         _this.random()
                      }else{
-                         _this.currentIndex++;
-                        if( _this.currentIndex>_this.songs.length-1){
-                              _this.currentIndex=0
+                         currentIndex++;
+                        if( currentIndex>_this.songs.length-1){
+                              currentIndex=0
                        }
                    }
-                    _this.songSelection=_this.currentIndex;
+                    _this.songSelection=currentIndex;
                     _this.colorMusicSelection()
                     _this.loadCurrentSong();
                     audio.play()
@@ -1471,14 +1497,14 @@ const app={
                     animationImg_mb.pause()
                     $$(".zing-result-list-item").forEach((item)=>{
                         const index =item.getAttribute("data-index")
-                         if(index == _this.currentIndex){
+                         if(index == currentIndex){
                             item.classList.add("action-pause-music")
                             item.classList.remove("action-play-music")
                           } 
                         })
                     $$(".recently-song-item").forEach((item)=>{
                         const index =item.getAttribute("data-index")
-                            if(index == _this.currentIndex){
+                            if(index == currentIndex){
                             item.classList.add("action-pause-music")
                             item.classList.remove("action-play-music")
                             } 
@@ -1490,42 +1516,42 @@ const app={
                         iconPlay.classList.remove("action-play-icon")
                         iconPlay_mb.classList.remove("action-play-icon")
                         $$(".individual-ctn2-song-item").forEach(((item,index)=>{
-                            if(index!=_this.currentIndex){
+                            if(index!=currentIndex){
                                 item.classList.remove("action-play-music")
                                 item.classList.remove("action-pause-music")
                             }
                         }))
                         $$(".song-item-right").forEach((item)=>{
                             const index=item.getAttribute("data-index")
-                            if(index==_this.currentIndex){
+                            if(index==currentIndex){
                                 item.querySelector(".individual-ctn2-song-item-img").classList.remove("action-play-music")
                                 item.querySelector(".individual-ctn2-song-item-img").classList.add("action-pause-music")
                             }
                         })
                         $$(".zing-playList-item").forEach((item)=>{
                             const index=item.getAttribute("data-index")
-                            if(index==_this.currentIndex){
+                            if(index==currentIndex){
                                 item.querySelector(".individual-ctn2-song-item-img").classList.remove("action-play-music")
                                 item.querySelector(".individual-ctn2-song-item-img").classList.add("action-pause-music")
                             }
                         })
                         $$(".zingchart-body-list .zingchart-body-item").forEach((item,index)=>{
-                            if(index==_this.currentIndex){   
+                            if(index==currentIndex){   
                                 $$(".zingchart-body-left-song-item-img")[index].classList.remove("action-play-music")
                                 $$(".zingchart-body-left-song-item-img")[index].classList.add("action-pause-music")
                             }
                         })
                         $$(".the-song-include.free").forEach(item=>{
                             let index=item.getAttribute("data-index")
-                            if(index==_this.currentIndex){
+                            if(index==currentIndex){
                                     item.querySelector(".the-song-include-img").classList.remove("action-play-music")
                                     item.querySelector(".the-song-include-img").classList.add("action-pause-music")
                                 }
                             })
                             
                             if(_this.changerMusic){
-                                listSongs[_this.currentIndex].querySelector(".individual-ctn2-song-item-img").classList.add("action-pause-music")
-                                listSongs[_this.currentIndex].querySelector(".individual-ctn2-song-item-img").classList.remove("action-play-music")
+                                listSongs[currentIndex].querySelector(".individual-ctn2-song-item-img").classList.add("action-pause-music")
+                                listSongs[currentIndex].querySelector(".individual-ctn2-song-item-img").classList.remove("action-play-music")
                             }
                             _this.playSong=false
                             playListCDF1.classList.remove("action-rotate-play")
@@ -1554,7 +1580,7 @@ const app={
                     _this.colorMusic()
                     $$(".song-item-right").forEach((item)=>{
                         const index=item.getAttribute("data-index")
-                        if(index==_this.currentIndex){
+                        if(index==currentIndex){
                             item.querySelector(".individual-ctn2-song-item-img").classList.add("action-play-music")
                             item.querySelector(".individual-ctn2-song-item-img").classList.remove("action-pause-music")
                         }
@@ -1564,7 +1590,7 @@ const app={
                         _this.scrollToActiveSong($(".music-color"))
                         //  ---- Top 100 ----------
                         $$(".zingchart-body-list .zingchart-body-item").forEach((item,index)=>{
-                            if(index==_this.currentIndex){   
+                            if(index==currentIndex){   
                                 item.classList.add("music-color")
                                 $$(".zingchart-body-left-song-item-img")[index].classList.add("action-play-music")
                                 $$(".zingchart-body-left-song-item-img")[index].classList.remove("action-pause-music")
@@ -1576,8 +1602,8 @@ const app={
                             _this.loadPlayListTop_bottom()
                         }                   
                         if(_this.changerMusic){
-                            listSongs[_this.currentIndex].querySelector(".individual-ctn2-song-item-img").classList.add("action-play-music")
-                            listSongs[_this.currentIndex].querySelector(".individual-ctn2-song-item-img").classList.remove("action-pause-music")
+                            listSongs[currentIndex].querySelector(".individual-ctn2-song-item-img").classList.add("action-play-music")
+                            listSongs[currentIndex].querySelector(".individual-ctn2-song-item-img").classList.remove("action-pause-music")
                         
                         }
                         _this.loadColorZingchart()
@@ -1611,17 +1637,19 @@ const app={
                     $(".progressCurrent-mb").style.width=(audio.currentTime*100/audio.duration)+"%"
                         let minute=Math.floor(audio.currentTime/60)
                     if(minute<10){
-                        $(".minute").innerText="0"+minute
                         $(".minute-mb").innerText="0"+minute
+                        $(".minute").innerText="0"+minute
                     }else{
-                        $(".minute").innerText=minute
                         $(".minute-mb").innerText=minute
+                        $(".minute").innerText=minute
                     }
                         let second=Math.floor(audio.currentTime-minute*60)
                     if(second<10){
                         $(".second-mb").innerText="0"+second
+                        $(".second").innerText="0"+second
                     }else{
                         $(".second-mb").innerText=second
+                        $(".second").innerText=second
                     }
                 }
                 // khi kết thúc 1 bài hát 
@@ -1630,7 +1658,7 @@ const app={
                             audio.play()
                         }else{
                             if(_this.changerMusic==false){
-                                  _this.currentIndex=1
+                                  currentIndex=1
                             }
                             iconRight.click()
                             
@@ -1670,9 +1698,9 @@ const app={
                  $(".zing-controls").onclick=function(e){
                       if(! (e.target.closest(".repeat") ||  e.target.closest(".icon-control-right"))){
                         ZingControl_mb.classList.add("zing-controls-mb-open")
-                        $(".zing-controls").style.zIndex="1"
                       }
                  }
+
            //  --------------- Chọn tất cả để thêm vào play list --------------
      
                 iconSelectionAll.onclick=function(){
@@ -1696,13 +1724,9 @@ const app={
                }
                btn_addPlayList.onclick=function(){
                 _this.changerMusic=true
-                $(".playlist-content span").innerText="Tiếp Theo"
-                $(".list-empty").classList.add("hide")
-                $(".playlist-content").classList.remove("hide")
-                    playListSongRight.classList.add("playlist-song-open")
+                   _this.actionPlayList()
                     playListSongRight.classList.remove("playlist-song-exit")
-                    $(".individual-ctn1-header-left").classList.remove("action-add-playlist")
-                    $(".addPlayList .checkbox-wrapper .checkbox").classList.remove("action-checkbox")
+                    playListSongRight.classList.add("playlist-song-open")
                     $$(".individual-ctn2-song-item.music-color-selection-Checkbox").forEach((item)=>{
                         item.querySelector(".checkbox-wrapper").classList.remove("checkBox-color-action")
                         item.querySelector(".checkbox-wrapper .checkbox").classList.remove("action-checkbox")
@@ -1728,7 +1752,7 @@ const app={
                             } if(e.target.closest(".individual-ctn2-song-item-icon")){
                                 target.querySelector(".individual-ctn2-song-item-img").classList.add("action-play-music")
                                 target.querySelector(".individual-ctn2-song-item-img").classList.remove("action-pause-music")
-                                _this.currentIndex=Number(target.getAttribute("data-index"))
+                                currentIndex=Number(target.getAttribute("data-index"))
                                 _this.loadCurrentSong();
                                 _this.changerMusic=true
                                 audio.play()  
@@ -1750,17 +1774,21 @@ const app={
                      })
                      $(".playlist-content span").innerText=""
                      alert("Đã xóa thành công")
-                 }
-
-               
+             }      
     },
-    
+     actionPlayList:function(){
+         $(".playlist-content span").innerText="Tiếp Theo"
+         $(".list-empty").classList.add("hide")
+        $(".playlist-content").classList.remove("hide")
+        $(".individual-ctn1-header-left").classList.remove("action-add-playlist")
+        $(".addPlayList .checkbox-wrapper .checkbox").classList.remove("action-checkbox")
+     },
     handelPlayListSong:function(){
         const _this=this
         $(".zing-playList-right").ondblclick=function(e){
             const target=e.target.closest(".zing-playList-item")
             if(target){
-                _this.currentIndex=target.getAttribute("data-index")
+                currentIndex=target.getAttribute("data-index")
                 _this.loadCurrentSong()
                 _this.loadColorPlaylistSong()
                 playListCDF1.classList.add("action-rotate-play")
@@ -1768,7 +1796,6 @@ const app={
                 playListCDF0.classList.add("action-play-music")
                 $(".zing-playlist-btn").classList.add("action-playlist-btn")
                 $(".zing-playlist-img-rotate img").src=target.querySelector((".zing-playList-body-left-img img")).src
-                
                 audio.play()
                 _this.boolPlaylist=true
             }
@@ -1831,7 +1858,7 @@ const app={
     colorMusic_PlayList:function(){
         $$(".song-item-right").forEach((item)=>{
             let index=item.getAttribute("data-index")
-            if(index==this.currentIndex){
+            if(index==currentIndex){
                 item.classList.add("music-color-playlist")
                 item.classList.add("action-hover")
                 item.querySelector(".individual-ctn2-song-item-img").classList.add("action-play-music")
@@ -1849,10 +1876,10 @@ const app={
         $(".playlist-content-end").classList.add("hide")
                     $(".playlist-content span").style.color="white"
                     this.songs.forEach((item,index)=>{
-                    if(index<=_this.currentIndex ){
+                    if(index<=currentIndex ){
                         const html=this.songs.map(function(item,index){
-                            return index <=_this.currentIndex && index<=22? `<li class="song-item song-item-right ${audio.play()&&index==_this.currentIndex ? "music-color-playlist" :"" }" data-index=${index}> 
-                            <div class="individual-ctn2-song-item-img ${audio.play()&&index==_this.currentIndex ? "action-play-music" :"" }">
+                            return index <=currentIndex && index<=22? `<li class="song-item song-item-right ${audio.play()&&index==currentIndex ? "music-color-playlist" :"" }" data-index=${index}> 
+                            <div class="individual-ctn2-song-item-img ${audio.play()&&index==currentIndex ? "action-play-music" :"" }">
                                 <img src="${item.img}" alt="" class="individual-ctn2-song-img">
                                  <div class="individual-ctn2-song-item-icon color-main">
                                     <ion-icon name="play"></ion-icon>
@@ -1870,13 +1897,13 @@ const app={
                         $(".list-song-body-top").innerHTML=html.join(" ")
                     }else {
                         const html=this.songs.map(function(item,index){
-                            return  index > _this.currentIndex  && index<=22 ? `<li class="song-item song-item-right" data-index=${index}> 
+                            return  index > currentIndex  && index<=22 ? `<li class="song-item song-item-right" data-index=${index}> 
                             <div class="individual-ctn2-song-item-img">
                                 <img src="${item.img}" alt="" class="individual-ctn2-song-img">
                                  <div class="individual-ctn2-song-item-icon color-main">
                                     <ion-icon name="play"></ion-icon>
                                 </div>
-                                <div class="icon-play-song ${audio.play()&&index==_this.currentIndex ? "action-play-music" :"" }"">
+                                <div class="icon-play-song ${audio.play()&&index==currentIndex ? "action-play-music" :"" }"">
                                 <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif" alt="">
                                 </div>
                             </div>
@@ -1889,7 +1916,7 @@ const app={
                         $(".list-song-body-bottom").innerHTML=html.join(" ")
                     }
                 })
-         if(_this.currentIndex===22){
+         if(currentIndex===22){
             $(".playlist-content").classList.add("hide")
             $(".playlist-content-end").classList.remove("hide")
             $(".list-song-body-bottom").innerHTML=""
@@ -1904,10 +1931,10 @@ const app={
         var number_playList=0;
                 arr_PlayList.forEach((item,index)=>{
                        number_playList=index;
-                    if(item<=_this.currentIndex){
+                    if(item<=currentIndex){
                         const html=arr_PlayList.map(function(item){
-                            return item <=_this.currentIndex? `<li class="song-item song-item-right ${audio.play()&&item ==_this.currentIndex ? "music-color-playlist" :"" }" data-index=${item}> 
-                            <div class="individual-ctn2-song-item-img ${audio.play()&& item ==_this.currentIndex ? "action-play-music" :"" }">
+                            return item <=currentIndex? `<li class="song-item song-item-right ${audio.play()&&item ==currentIndex ? "music-color-playlist" :"" }" data-index=${item}> 
+                            <div class="individual-ctn2-song-item-img ${audio.play()&& item ==currentIndex ? "action-play-music" :"" }">
                                 <img src="${_this.songs[item].img}" alt="" class="individual-ctn2-song-img">
                                 <div class="individual-ctn2-song-item-icon color-main">
                                     <ion-icon name="play"></ion-icon>
@@ -1924,9 +1951,9 @@ const app={
                         })
                         $(".list-song-body-top").innerHTML=html.join(" ")
                     }
-                    if(item>=_this.currentIndex){
+                    if(item>=currentIndex){
                             const html=arr_PlayList.map(function(item){
-                                return  item > _this.currentIndex ? `<li class="song-item song-item-right" data-index=${item}> 
+                                return  item > currentIndex ? `<li class="song-item song-item-right" data-index=${item}> 
                                 <div class="individual-ctn2-song-item-img">
                                     <img src="${_this.songs[item].img}" alt="" class="individual-ctn2-song-img">
                                     <div class="individual-ctn2-song-item-icon color-main">
@@ -1963,23 +1990,23 @@ const app={
       },
      random:function(){
             let rand=Math.floor(Math.random()*this.songs.length-1)
-            this.currentIndex=rand
+            currentIndex=rand
     },
      loadCurrentSong:function(){
-            cdImg.src=this.songs[this.currentIndex].img;
-            cdTitle.innerText=this.songs[this.currentIndex].title;
-            cdDes.innerText=this.songs[this.currentIndex].singer;
-            audio.src=this.songs[this.currentIndex].pathSong;
-            $(".time-end").innerText=this.songs[this.currentIndex].duration
+            cdImg.src=this.songs[currentIndex].img;
+            cdTitle.innerText=this.songs[currentIndex].title;
+            cdDes.innerText=this.songs[currentIndex].singer;
+            audio.src=this.songs[currentIndex].pathSong;
+            $(".time-end").innerText=this.songs[currentIndex].duration
             //mobile
-            $(".control-left-title-mb .content h1").innerText=this.songs[this.currentIndex].title;
-            $(".control-left-title-mb .content small").innerText=this.songs[this.currentIndex].singer;
-            $(".control-left-img-mb img").src=this.songs[this.currentIndex].img;
-            $(".time-end-mb").innerText=this.songs[this.currentIndex].duration
+            $(".control-left-title-mb .content h1").innerText=this.songs[currentIndex].title;
+            $(".control-left-title-mb .content small").innerText=this.songs[currentIndex].singer;
+            $(".control-left-img-mb img").src=this.songs[currentIndex].img;
+            $(".time-end-mb").innerText=this.songs[currentIndex].duration
         },
     colorMusic:function(){
         $$(".individual-ctn2-song-item").forEach((item,index)=>{
-            if(index==this.currentIndex){
+            if(index==currentIndex){
                 item.classList.add("music-color")
                 item.querySelector(".individual-ctn2-song-item-img").classList.add("action-play-music")
             }else{
@@ -2004,110 +2031,120 @@ const app={
     },
   
  //   ================= cá nhân =================
- handelEvent:function(){   
- //    ------------ lựa chọn ----------
-     $$(".zing-body-selector .list .item").forEach((item,index)=>{
-          item.onclick=()=>{
-             if(index<4){
-                console.log(isTheme)
-                 if(isTheme==true){
-                        $(".item.zing-body-selector-bgr").classList.remove("zing-body-selector-bgr")
-                        item.classList.add("zing-body-selector-bgr")
-                        $(".zing-body-selector-bgr").style.background="var(--color-white);"
-                 }else{
-                        $(".item.zing-body-selector-bgr").classList.remove("zing-body-selector-bgr")
-                        $(".zing-body-selector-bgr").style.background="rgba(0, 0, 0, 0.3)"
-                        item.classList.add("zing-body-selector-bgr")
-                 }
-                 
-                 if(index==0){
-                     individual_ctn2.classList.remove("hide")
-                     individual_ctn3.classList.remove("hide")
-                     individual_ctn4.classList.remove("hide")
-                     individual_ctn5.classList.remove("hide")
-                     individual_ctn1.classList.remove("hide")
-                     $(".individual-ctn2 .l-4").classList.remove("hide")
-                     $(".individual-ctn2 .l-8").classList.remove("l-12")
-                     $$(".checkbox-wrapper").forEach((item,index)=>{
-                         item.style.display="none"
-                     })
-                     $$(".individual-ctn2-song-item").forEach((item)=>{
-                        item.classList.remove("action-hover")
-                    })
-                     $$(".individual-ctn2-song-item").forEach((item)=>{
-                        item.classList.remove("music-color-selection-Checkbox")
-                     })
-                     $(".individual-ctn1-header-left").classList.remove("action-add-playlist")
-                     $(".individual-ctn2-right").style.height="300px"
-                     $(".individual-ctn1-header-left").classList.remove("action-add-playlist-mb")
-                     $(".individual-btn").classList.remove("hide")
-                     $(".individual-btn-all").classList.remove("hide")
-                 }
-                 if(index==1){
-                     individual_ctn3.classList.add("hide")
-                     individual_ctn4.classList.add("hide")
-                     individual_ctn5.classList.add("hide")
-                     individual_ctn2.classList.remove("hide")
-                     individual_ctn1.classList.remove("hide")
-                     $(".individual-ctn2 .l-4").classList.add("hide")
-                     $(".individual-ctn2 .l-8").classList.add("l-12")
-                     $$(".checkbox-wrapper").forEach((item,index)=>{
-                         item.style.display="flex"
-                     })
-                    $$(".individual-ctn2-song-item").forEach((item)=>{
-                        item.classList.add("action-hover")
-                    })
-                    $(".individual-ctn2-right").style.height="100%"
-                    $(".individual-ctn1-header-left").classList.add("action-add-playlist-mb")
-                    $(".individual-ctn2-song-list").classList.add("action-add-playlist-mb")
-                    $(".individual-btn").classList.add("hide")
-                    $(".individual-btn-all").classList.add("hide")
-                 }
-                 }if(index==2){
-                     individual_ctn3.classList.remove("hide")
-                     individual_ctn2.classList.add("hide")
-                     individual_ctn4.classList.remove("hide")
-                     individual_ctn5.classList.add("hide")
-                     individual_ctn1.classList.add("hide")
-                 } if(index==3){
-                     individual_ctn4.classList.add("hide")
-                     individual_ctn2.classList.add("hide")
-                     individual_ctn3.classList.add("hide")
-                     individual_ctn5.classList.remove("hide")
-                     individual_ctn1.classList.add("hide")
-                 }
-                 $(".zing-body").style.paddingBottom="100px"
-             }
-     })
-     $(".zing-header-settings").onclick=function(){
-          $(".setting-list").classList.toggle("hide")
+    handelEvent:function(){   
+    //    ------------ lựa chọn ----------
+        $$(".zing-body-selector .list .item").forEach((item,index)=>{
+            item.onclick=()=>{
+                if(index<4){
+                    if(isTheme==true){
+                            $(".item.zing-body-selector-bgr").classList.remove("zing-body-selector-bgr")
+                            item.classList.add("zing-body-selector-bgr")
+                            $(".zing-body-selector-bgr").style.background="var(--color-white);"
+                    }else{
+                            $(".item.zing-body-selector-bgr").classList.remove("zing-body-selector-bgr")
+                            $(".zing-body-selector-bgr").style.background="rgba(0, 0, 0, 0.3)"
+                            item.classList.add("zing-body-selector-bgr")
+                    }
+                    
+                    if(index==0){
+                        individual_ctn2.classList.remove("hide")
+                        individual_ctn3.classList.remove("hide")
+                        individual_ctn4.classList.remove("hide")
+                        individual_ctn5.classList.remove("hide")
+                        individual_ctn1.classList.remove("hide")
+                        $(".individual-ctn2 .l-4").classList.remove("hide")
+                        $(".individual-ctn2 .l-8").classList.remove("l-12")
+                        $$(".checkbox-wrapper").forEach((item,index)=>{
+                            item.style.display="none"
+                        })
+                        $$(".individual-ctn2-song-item").forEach((item)=>{
+                            item.classList.remove("action-hover")
+                        })
+                        $$(".individual-ctn2-song-item").forEach((item)=>{
+                            item.classList.remove("music-color-selection-Checkbox")
+                        })
+                        $(".individual-ctn1-header-left").classList.remove("action-add-playlist")
+                        $(".individual-ctn2-right").style.height="300px"
+                        $(".individual-ctn1-header-left").classList.remove("action-add-playlist-mb")
+                        $(".individual-btn").classList.remove("hide")
+                        $(".individual-btn-all").classList.remove("hide")
+                    }
+                    if(index==1){
+                        individual_ctn3.classList.add("hide")
+                        individual_ctn4.classList.add("hide")
+                        individual_ctn5.classList.add("hide")
+                        individual_ctn2.classList.remove("hide")
+                        individual_ctn1.classList.remove("hide")
+                        $(".individual-ctn2 .l-4").classList.add("hide")
+                        $(".individual-ctn2 .l-8").classList.add("l-12")
+                        $$(".checkbox-wrapper").forEach((item,index)=>{
+                            item.style.display="flex"
+                        })
+                        $$(".individual-ctn2-song-item").forEach((item)=>{
+                            item.classList.add("action-hover")
+                        })
+                        $(".individual-ctn2-right").style.height="100%"
+                        $(".individual-ctn1-header-left").classList.add("action-add-playlist-mb")
+                        $(".individual-ctn2-song-list").classList.add("action-add-playlist-mb")
+                        $(".individual-btn").classList.add("hide")
+                        $(".individual-btn-all").classList.add("hide")
+                    }
+                    }if(index==2){
+                        individual_ctn3.classList.remove("hide")
+                        individual_ctn2.classList.add("hide")
+                        individual_ctn4.classList.remove("hide")
+                        individual_ctn5.classList.add("hide")
+                        individual_ctn1.classList.add("hide")
+                    } if(index==3){
+                        individual_ctn4.classList.add("hide")
+                        individual_ctn2.classList.add("hide")
+                        individual_ctn3.classList.add("hide")
+                        individual_ctn5.classList.remove("hide")
+                        individual_ctn1.classList.add("hide")
+                    }
+                    $(".zing-body").style.paddingBottom="100px"
+                }
+        })
+        $(".zing-header-settings").onclick=function(){
+            $(".setting-list").classList.toggle("hide")
+        }
+            //  ---------- xử lý playlist -----------
+        
+        
+    // ------------ hiện danh sách playlist---------------
+    $(".list-song").onclick=()=>{
+        if(this.isPlayList==false){
+            playListSongRight.classList.remove("playlist-song-open")
+            playListSongRight.classList.add("playlist-song-exit")
+            this.isPlayList=true
+        }else if(this.isPlayList==true){
+            playListSongRight.classList.add("playlist-song-open")
+            playListSongRight.classList.remove("playlist-song-exit")
+            this.isPlayList=false
+        }
     }
-        //  ---------- xử lý playlist -----------
-      
-    
-// ------------ hiện danh sách playlist---------------
-$(".list-song").onclick=()=>{
-    if(this.isPlayList==false){
-           playListSongRight.classList.remove("playlist-song-open")
-           playListSongRight.classList.add("playlist-song-exit")
-           this.isPlayList=true
-    }else if(this.isPlayList==true){
-           playListSongRight.classList.add("playlist-song-open")
-           playListSongRight.classList.remove("playlist-song-exit")
-           this.isPlayList=false
+    // close playlist mobile
+    $(".playlist-song .icon-close").onclick=function(){
+        playListSongRight.classList.remove("playlist-song-open")
+        playListSongRight.classList.add("playlist-song-exit")
     }
-}
-//  -------------- thả <3 ------------
-iconFavorite.onclick=function(){
-    this.isFavorite=!this.isFavorite
-    this.classList.toggle("action-favorite",this.isFavorite)
-}
+    // open playlist mobile 
+        $(".playList").onclick=function(){
+            playListSongRight.classList.add("playlist-song-open")
+            playListSongRight.classList.remove("playlist-song-exit")
+        }
+    //  -------------- thả <3 ------------
+    iconFavorite.onclick=function(){
+        this.isFavorite=!this.isFavorite
+        this.classList.toggle("action-favorite",this.isFavorite)
+    }
 
- //------------- chuyển đổi hình ảnh -------------
-},
+    //------------- chuyển đổi hình ảnh -------------
+    },
 
 
  randerSinger:function(){
+    
     const individualctn5=$(".individual-ctn5-body")
     const html=this.listSinger.map(item=>{
         return ` <div class="l-2-4 m-2-4 c-6">
@@ -2692,7 +2729,7 @@ iconFavorite.onclick=function(){
             if(target){
                   let index =target.getAttribute("data-index")
                 if(e.target.closest(".the-song-icon-play")){
-                        _this.currentIndex=index
+                        currentIndex=index
                         _this.loadColorMusicDiscover()
                         _this.loadCurrentSong()
                         audio.play()
@@ -2722,7 +2759,7 @@ iconFavorite.onclick=function(){
         // ------------ click bài hát free ---------
             $$(".the-song-include.free").forEach(item=>{
                 item.ondblclick=function(){
-                    _this.currentIndex=item.getAttribute("data-index");
+                    currentIndex=item.getAttribute("data-index");
                     _this.loadCurrentSong()
                     _this.loadColorMusicDiscover()
                        audio.play()
@@ -2750,7 +2787,7 @@ iconFavorite.onclick=function(){
     loadColorMusicDiscover:function(){
         $$(".the-song-include.free").forEach(item=>{
              const index=item.getAttribute("data-index")
-            if(index==this.currentIndex){
+            if(index==currentIndex){
                 item.querySelector(".the-song-include-img").classList.add("action-play-music")
                 item.classList.add("music-color-selection")
             }else{
@@ -2802,9 +2839,9 @@ iconFavorite.onclick=function(){
                                 <small class="color-small">${item.singer}</small>
                         </div>
                     </div>
-                    <div class="zingchart-body-main color-small c-0">
-                              <span>${item.title}</span>
-                              <span>(singer)</span>
+                    <div class="zingchart-body-main  color-small c-0">
+                            <span class="title">${item.title}</span>
+                            <span class="singer">(singer)</span>
                     </div>
                     <div class="zingchart-body-right">
                         <div class="zingchart-body-right-icon">
@@ -2901,7 +2938,7 @@ iconFavorite.onclick=function(){
        
         zingcharBodyList.forEach((item,index)=>{
             item.ondblclick=function(){
-                 _this.currentIndex=index
+                 currentIndex=index
                     _this.loadCurrentSong()
                     _this.loadColorZingchart()
                     _this.deleteColorMusic=false
@@ -2917,7 +2954,7 @@ iconFavorite.onclick=function(){
                        audio.pause()
                    }else if(iconPause){
                         let index=Number(e.target.closest(".individual-ctn2-song-item-icon").getAttribute("data-index"))
-                            _this.currentIndex=index
+                            currentIndex=index
                             _this.loadCurrentSong()
                             _this.loadColorZingchart()
                             audio.play()
@@ -2928,7 +2965,7 @@ iconFavorite.onclick=function(){
                            let index=Number(e.target.closest(".icon-favorite").getAttribute("data-index"))
                 }
                    zingcharBodyList.forEach((item,index)=>{
-                       if(index!=_this.currentIndex){
+                       if(index!=currentIndex){
                            $$(".zingchart-body-left-song-item-img")[index].classList.remove("action-play-music")
                            $$(".zingchart-body-left-song-item-img")[index].classList.remove("action-pause-music")
                        
@@ -2939,7 +2976,7 @@ iconFavorite.onclick=function(){
     loadColorZingchart:function(){
         const _this=this
                 $$(".zingchart-body-list .zingchart-body-item").forEach((item,index)=>{
-                    if(index==_this.currentIndex){   
+                    if(index==currentIndex){   
                         item.classList.add("music-color")
                         $$(".zingchart-body-left-song-item-img")[index].classList.add("action-play-music")
                     }else{
@@ -2952,7 +2989,7 @@ iconFavorite.onclick=function(){
         const _this=this
                 $$(".zing-playList-item").forEach((item,i)=>{
                     const index=item.getAttribute("data-index")
-                    if(index==_this.currentIndex){   
+                    if(index==currentIndex){   
                         item.classList.add("music-color")
                         $$(".zing-playList-body-left-img")[i].classList.add("action-play-music")
                         playListCDF1.classList.add("action-rotate-play")
@@ -3128,11 +3165,13 @@ scChedule:[
 
     },
    startRadio:function(){
+
         this.livestream(this.ListLiveTream,$(".RadioCtn-ctn1-body"),this.ListLiveTream.length)
         this.loadscChedule($(".programs"),this.scChedule,0,5)
         this.loadscChedule($(".programs-bottom"),this.scChedule,5,10)
         this.randerRadio($(".RadioCtn-ctn4 .body .list"),this.radioImg)
         this.handleRadio()
+       
        
    },
     
@@ -3148,11 +3187,18 @@ scChedule:[
         this.handelMenu()
    },
 //    ===================
-
+   loadConfig:function(){
+        isShuffle=this.config.isShuffle
+        isRepeat=this.config.isRepeat
+        iconShuffle.classList.toggle("action-controls",isShuffle)
+        iconRepeat.classList.toggle("action-controls",isRepeat)
+        iconShuffle_mb.classList.toggle("action-controls",isShuffle)
+        iconRepeat_mb.classList.toggle("action-controls",isRepeat)
+    },
    
-
     
     start:function(){
+        this.loadConfig()
         this.loadSong()
         this.loadCurrentSong()
         this.loadPlayListSongs()

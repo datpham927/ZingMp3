@@ -36,7 +36,11 @@ html{
     height: 100%;
     overflow: hidden;
 }
-
+.grid{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 .zing{
  display: flex;
  width: 100%;
@@ -407,11 +411,12 @@ html{
     transition: 3s;
  }
  .zing-body-avatar h1{
-    margin-top:30px;
+    margin-top:20px;
     font-size: 30px;
+    text-transform: capitalize;
  }
 .zing-body-avatar a img:hover {
-   transform: scale(3);
+   transform: scale(2);
 }
 
 @keyframes scaleClose{
@@ -547,7 +552,7 @@ html{
     transform: translateX(0);
     opacity: 1;
     z-index:4;
-    width: 60%;
+    width: 59%;
     top:50px;
     height: auto;
 }
@@ -1394,13 +1399,14 @@ background-color: var(--background-while);
     overflow: hidden;
     border-radius: 5px;
     width: 100%;
-    height: 100px;
+    height:auto;
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 .topic-theme img{
-  width: 100%;
-  height: auto;
-  transition: 1s;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: 1s;
 }
 .topic-theme:hover .topic-theme-img img{
     transform: scale(1.1);
@@ -2206,7 +2212,16 @@ background-color: var(--background-while);
     margin: 0 20px;
     display: none;
 }
-
+.zing-control-left .no-favorite{
+    display: block;
+}
+.zing-control-left .no-favorite,
+.zing-control-left .yes-favorite{
+    margin: 0;
+}
+.zing-control-left .action-favorite .no-favorite{
+    display: none;
+}
 .zingchart-song-time{
   font-size: 12px;
   margin: 0 12px;
@@ -2833,14 +2848,6 @@ background-color: var(--background-while);
 }
 
 
-
-
-
-
-
-
-
-
 /* -------------p phần dùng chung----------------- */
 .modal-icon-play{
     align-items: center;
@@ -2924,3 +2931,4 @@ li{
 .overflow-pc{
    overflow: hidden;
 }
+
