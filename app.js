@@ -277,7 +277,7 @@ const app={
                       zingHeader.style.boxShadow="none"
                   }else if(target>=0){
                       if(indexImg==2){
-                          zingHeader.style.background=`url("../background/backroundThemes/2.jpg")no-repeat center/cover`
+                          zingHeader.style.background=`url("./background/backroundThemes/2.jpg")no-repeat center/cover`
                           zingHeader.style.boxShadow=`rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`
                       }else{
                         if(indexImg==0){
