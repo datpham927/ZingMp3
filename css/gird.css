@@ -263,7 +263,7 @@
 }
 }
 /* >= Tablet */
-@media (min-width: 740px) and (max-width: 1024px) {
+@media (min-width: 740px) and (max-width: 1023px) {
     .row {
         margin-left: -4px;
         margin-right: -4px;
@@ -403,7 +403,7 @@
 }
 
 /* PC medium resolution > */
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1024px) and (max-width: 1280px) {
     .row {
         margin-left: -8px;
         margin-right: -8px;

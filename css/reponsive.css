@@ -1,4 +1,4 @@
-@media (min-width:740px) and (max-width: 1024px) {
+@media (min-width:740px) and (max-width: 1023px) {
     .individual{
         padding: 0 20px;
     }
@@ -783,9 +783,6 @@
     top:10px;
     right: 10px;
 }
-
-
-
 
 
 

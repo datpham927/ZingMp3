@@ -1319,6 +1319,7 @@ const app={
                     $$(".individual-ctn2-song-item")[checkBoxSelection].classList.remove("music-color-selection-Checkbox")
                     checkbox_wrapper.classList.remove("checkBox-color-action") 
                     _this.isCheckBox=!_this.isCheckBox
+                    allPlayList=false
                 }else{
                     checkbox.classList.add("action-checkbox")
                     checkBoxSelection=checkbox_wrapper.getAttribute("data-index")
@@ -1326,6 +1327,7 @@ const app={
                     $$(".individual-ctn2-song-item")[checkBoxSelection].classList.add("music-color-selection-Checkbox")
                     checkbox_wrapper.classList.add("checkBox-color-action") 
                     _this.isCheckBox=!_this.isCheckBox
+                    allPlayList=false
                 }
                 let LengthSelection=$$(".individual-ctn2-song-item.music-color-selection-Checkbox").length
               
@@ -1599,6 +1601,7 @@ const app={
                         })
                         if(allPlayList){
                             _this.loadSongRight()
+                            allPlayList==false
                         }else{
                             _this.loadPlayListTop_bottom()
                         }                   
@@ -1735,10 +1738,10 @@ const app={
                         item.classList.remove("music-color-selection")
                         if(allPlayList){
                             _this.loadSongRight();
-                            allPlayList=true
                         }else{
                             _this.loadPlayListTop_bottom()
                         }
+
               
             })
             alert("Đã Thêm Vào Danh Sách !")
@@ -1759,6 +1762,7 @@ const app={
                                 audio.play()  
                             }
                         }
+
                         
                         }
               }
@@ -1773,10 +1777,11 @@ const app={
                 $$(".song-item-right").forEach((item)=>{
                          item.remove();
                      })
+                     arrPlayList=[]
                      $(".playlist-content span").innerText=""
-                 
+                     alert("Đã xóa thành công")
                     }      
-                    alert("Đã xóa thành công")
+               
     },
      actionPlayList:function(){
          $(".playlist-content span").innerText="Tiếp Theo"
@@ -3200,6 +3205,7 @@ scChedule:[
    
     
     start:function(){
+
         this.loadConfig()
         this.loadSong()
         this.loadCurrentSong()

@@ -866,12 +866,13 @@ html::-webkit-scrollbar{
 .individual-ctn3-item-img{
     position: relative;
     width: 100%;
-    height: 13vw;
+    height: 100%;
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
 }
 .individual-ctn3-item-img img{
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1042,6 +1043,9 @@ html::-webkit-scrollbar{
 .individual-ctn5-info .btn:hover{
     background-color: rgba(225, 225, 225, 0.05);
    
+}
+.individual-ctn5-hover{
+    padding: 10px;
 }
 .individual-ctn5-hover:hover .modal-icon-play{
     display: flex;
@@ -1896,10 +1900,6 @@ background-color: var(--background-while);
   margin: 0 -10px;
 }
 
-.discover-ctn3-img{
-    width: 209px;
-    height: 209px;
-}
 
 .discover-ctn3-item{
     height: 100%;
@@ -1915,9 +1915,12 @@ background-color: var(--background-while);
 }
 .discover-ctn6-img{
     border: 3px solid #fd79a8;
-    width:130px;
-    height:130px;
+    width:100%;
+    height:100%;
     border-radius: 100%;
+}
+.discover-ctn6-img img{
+    display: block;
 }
 .discover-ctn6-img:hover{
     border: 4px solid #fd79a8;
