@@ -403,7 +403,7 @@
 }
 
 /* PC medium resolution > */
-@media (min-width: 1024px) and (max-width: 1400px) {
+@media (min-width: 1024px) and (max-width: 2000px) {
     .row {
         margin-left: -8px;
         margin-right: -8px;
