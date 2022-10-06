@@ -154,14 +154,14 @@ const app={
                                     search=index
                                     zingHeader.style.background=`url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                     zingHeader.style.boxShadow=`rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`
-                                    $(".topic").style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
-                                    infoSearch.style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
-                                    $(".zing-controls-mb").style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
-                                    $(".setting-list").style.background=`linear-gradient(0,rgba(225,225,225,0.1),rgba(225,225,225,0.2)),url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
+                                    $(".topic").style.background=`url(./background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
+                                    infoSearch.style.background=`url(./background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
+                                    $(".zing-controls-mb").style.background=`url(./background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
+                                    $(".setting-list").style.background=`linear-gradient(0,rgba(225,225,225,0.1),rgba(225,225,225,0.2)),url("./background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                                     if(index==3||index==4||index==5||index==6||index==7){
                                             isTheme=true
                                             $(".background").style.backgroundImage=`url("./background/backroundThemes/${index}.jpg")`
-                                            $(".footer-mb").style.background=`linear-gradient(0 ,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url("../background/backroundThemes/${index}.jpg")`
+                                            $(".footer-mb").style.background=`linear-gradient(0 ,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url("./background/backroundThemes/${index}.jpg")`
                                             $(".zing-body-selector").classList.add("action-list-selection")
                                             $(".zing-controls").style.background=`linear-gradient(0 ,rgba(225,225,225,0.2),rgba(225,225,225,0.2)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                             $$(".checkbox-wrapper ion-icon").forEach(item=>{
@@ -212,7 +212,7 @@ const app={
                                         isTheme=false
                                         $(".zing-body-selector").classList.remove("action-list-selection")
                                         $(".background").style.backgroundImage=`url("./background/backroundThemes/${index}.jpg")`
-                                        $(".footer-mb").style.background=`linear-gradient(0 ,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("../background/backroundThemes/${index}.jpg")`
+                                        $(".footer-mb").style.background=`linear-gradient(0 ,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("./background/backroundThemes/${index}.jpg")`
                                         $(".zing-controls").style.background=`linear-gradient(0 ,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                         playListSongRight.style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                         $$(".checkbox-wrapper ion-icon").forEach(item=>{
@@ -251,7 +251,7 @@ const app={
                                         })
                                     if(index==0){
                                         $(".background").style.backgroundImage=`url("./background/backroundThemes/0.svg")`
-                                        $(".footer-mb").style.background=`linear-gradient(0 ,rgba(225,225,225,0.1),rgba(225,225,225,0.1)),url("../background/backroundThemes/0.svg")`
+                                        $(".footer-mb").style.background=`linear-gradient(0 ,rgba(225,225,225,0.1),rgba(225,225,225,0.1)),url("./background/backroundThemes/0.svg")`
                                         playListSongRight.style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/0.svg")no-repeat center/cover`
                                         $(".zing-controls").style.background=`linear-gradient(0 ,rgba(225,225,225,0.05),rgba(225,225,225,0.1)),url("./background/backroundThemes/0.svg")no-repeat center/cover`
                                     }
@@ -268,7 +268,7 @@ const app={
                 if(e.target.closest(".topic-theme-img img")){
                         const index=e.target.closest(".topic-theme").getAttribute("data-index")-1
                         indexImg=index
-                        $(".zing-sidebar-mb").style.background=`url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
+                        $(".zing-sidebar-mb").style.background=`url("./background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                 }
             }
 
@@ -705,7 +705,7 @@ const app={
             if(targetInfoSearch||targetZingSearch){
                infoSearch.classList.remove("hide")
                ZingSearch.classList.add("action-search")
-               $(".action-search.zing-search").style.background=`url(../background/modalThemes/modalTheme3/theme${search}.jpg) center/cover no-repeat`
+               $(".action-search.zing-search").style.background=`url(./background/modalThemes/modalTheme3/theme${search}.jpg) center/cover no-repeat`
                const targetBody=e.target.closest(".recently .body")
                     if(targetBody){
                         const recentlyItem=e.target.closest(".recently-song-item")
