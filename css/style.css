@@ -388,8 +388,8 @@ html::-webkit-scrollbar{
 }
 
 /* ------ cá nhân ----- */
-.zing-header-topic{
-   color:#FC427B;
+.zing-header-topic-icon{
+   height: 100%;
 }
 .zing-right-item img{
   width: 100%;
