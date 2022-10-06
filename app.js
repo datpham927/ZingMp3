@@ -156,6 +156,7 @@ const app={
                                     zingHeader.style.boxShadow=`rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`
                                     $(".topic").style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
                                     infoSearch.style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
+                                    $(".zing-controls-mb").style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
                                     $(".setting-list").style.background=`linear-gradient(0,rgba(225,225,225,0.1),rgba(225,225,225,0.2)),url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                                     if(index==3||index==4||index==5||index==6||index==7){
                                             isTheme=true
@@ -200,9 +201,11 @@ const app={
                                         $(".individual-btn").style.background="rgba(225, 225, 225, 225.05)"
                                         if(isRepeat){
                                             iconRepeat.style.color="#6c5ce7"
+                                            iconRepeat_mb.style.color="#6c5ce7"
                                         }
                                         if(isShuffle){
                                             iconShuffle.style.color="#6c5ce7"
+                                            iconShuffle_mb.style.color="#6c5ce7"
                                         }
                                    }else{
                                         indexImg=index
@@ -861,15 +864,79 @@ const app={
         $(".zing-result-list").ondblclick=function(e){
             const target=e.target.closest(".zing-result-list-item")
             if(target){
-                currentIndex=target.getAttribute("data-index")
-                _this.loadCurrentSong()
-                _this.loadColorSearch($$(".zing-result-list-item"))
-                $(".zing-result").classList.remove("hide")
-                individual.classList.add("hide")
-                discover.classList.add("hide")
-                zingchart.classList.add("hide")
-                RadioCtn.classList.add("hide")
-                audio.play()
+                const index =target.getAttribute("data-index")
+                            currentIndex=index
+                            _this.loadCurrentSong()
+                            const html=_this.songs.map((item,i)=>{
+                                if(i==index){
+                                  return `
+                                  <li class="song-item zingchart-body-item zing-playList-item" data-index=${i}> 
+                                                 <div class="checkbox-wrapper color-main "data-index=${i}>
+                                                       <ion-icon class="checkBox-icon-music"name="musical-notes-outline"></ion-icon>
+                                                      <div class="checkbox">
+                                                          <input type="checkbox">
+                                                      </div>
+                                                  </div>
+                                      <div class="zingchart-body-ctn">
+                                          <div class="zingchart-body-left zing-playList-body-left">
+                                              <div class="individual-ctn2-song-item-img zing-playList-body-left-img">
+                                                  <img src="${item.img}" alt="" class="individual-ctn2-song-img">
+                                                  <div class="individual-ctn2-song-item-icon"data-index=${i}>
+                                                      <ion-icon name="play"></ion-icon>
+                                                  </div>
+                                                  <div class="icon-play-song icon-play-song-top ">
+                                                      <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif" alt="">
+                                                  </div>
+                                              </div>
+                                              <div class="individual-ctn2-song-title zingchart ">
+                                                      <span class="color-title">${item.title}</span>
+                                                      <small class="color-small">${item.singer}</small>
+                                              </div>
+                                          </div>
+                                          <div class="zingchart-body-main  color-small c-0">
+                                                <span class="title">${item.title}</span>
+                                                <span class="singer">(singer)</span>
+                                          </div>
+                                          <div class="zingchart-body-right">
+                                              <div class="zingchart-body-right-icon">
+                                                  <div class="zingchart-icon icon-mic color-title">
+                                                      <i class="fa-sharp fa-solid fa-microphone"></i>
+                                                  </div>
+                                                  <div class="icon-favorite color-small "data-index=${index}>
+                                                        <div class="no-favorite zingchart-icon icon-tym action-hover">
+                                                            <ion-icon name="heart-outline"></ion-icon>
+                                                        </div>
+                                                        <div class="yes-favorite zingchart-icon icon-tym action-hover">
+                                                            <ion-icon name="heart"></ion-icon>
+                                                        </div>
+                                                    </div>
+
+                                                  <div class="zingchart-icon color-title c-0">
+                                                      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                                                  </div>
+                                              </div>
+                          
+                                              <span class="zingchart-song-time color-small">${item.duration}</span>
+                                          </div>
+                                      </div>
+                                  </li> 
+                                  `
+                                }
+                              })
+                            $(".zing-playList-right-body").innerHTML=html.join("")
+                            zingPlayList.classList.remove("hide")
+                            $(".zing-result").classList.add("hide")
+                            playListCDF1.classList.add("action-rotate-play")
+                            playListCDF0.classList.add("action-rotate")
+                            playListCDF0.classList.add("action-play-music")
+                            individual.classList.add("hide")
+                            discover.classList.add("hide")
+                            zingchart.classList.add("hide")
+                            RadioCtn.classList.add("hide")
+                            $(".zing-playlist-img-rotate img").src=target.querySelector(".individual-ctn2-song-item-img img").src
+                            _this.boolPlaylist=true
+                            individual.classList.add("hide")
+                            audio.play()
                 
             }
         }
@@ -1182,9 +1249,12 @@ const app={
               $(".zing-playlist-img-rotate img").src="./img/discover/ctn3/1.webp"
               $(".zing-playList-right-body").innerHTML=html.join("")
         }
-
+      _this.loadInterested()
+       
+    },
+    loadInterested:function(){
         const interested=this.songs.map((item,index)=>{
-            if(index<10)
+            if(index<10 && index !=currentIndex){
               return `
               <li class="song-item zingchart-body-item zing-playList-item" data-index=${index}> 
                              <div class="checkbox-wrapper color-main "data-index=${index}>
@@ -1237,6 +1307,7 @@ const app={
                   </div>
               </li> 
               `
+            }
           })
           $(".interested .body").innerHTML=interested.join("")
     },
@@ -1385,6 +1456,8 @@ const app={
                 iconRepeat.onclick=function(){
                     isRepeat=!isRepeat;
                     this.classList.toggle("action-controls",isRepeat)
+                    iconRepeat_mb.classList.toggle("action-controls",isRepeat)
+
                     _this.setConfig("isRepeat",isRepeat)
                     if(isRepeat){
                         if(isTheme==false){
