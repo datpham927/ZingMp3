@@ -1774,8 +1774,9 @@ const app={
                          item.remove();
                      })
                      $(".playlist-content span").innerText=""
-                     alert("Đã xóa thành công")
-             }      
+                 
+                    }      
+                    alert("Đã xóa thành công")
     },
      actionPlayList:function(){
          $(".playlist-content span").innerText="Tiếp Theo"
