@@ -582,6 +582,160 @@
     }
 }
 
+@media (width: 1024px){
+     .m-pro-1,
+    .m-pro-2,
+    .m-pro-1-2,
+    .m-pro-1-3,
+    .m-pro-1-5,
+    .m-pro-2-4,
+    .m-pro-3,
+    .m-pro-4,
+    .m-pro-4-3,
+    .m-pro-5,
+    .m-pro-6,
+    .m-pro-6-7,
+    .m-pro-7,
+    .m-pro-8,
+    .m-pro-9,
+    .m-pro-10,
+    .m-pro-10-5,
+    .m-pro-11,
+    .m-pro-12 {
+        display: block;
+    }
+
+    .m-pro-1 {
+        flex: 0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+    .m-pro-1-2{
+        flex: 0 0 10%;
+        max-width: 10%;
+    }
+   
+    .m-pro-1-5{
+        flex: 0 0 12.5%;
+        max-width: 12.5%;
+    }
+
+        .m-pro-2 {
+        flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+
+    .m-pro-2-4 {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+
+    .m-pro-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .m-pro-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+    .m-pro-4-3{
+        flex: 0 0 36%;
+        max-width: 36%;
+    }
+
+    .m-pro-5 {
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+
+    .m-pro-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .m-pro-7 {
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+    .m-pro-7-2{
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+
+    .m-pro-8 {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+
+    .m-pro-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+
+    .m-pro-10 {
+        flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+
+    .m-pro-11 {
+        flex: 0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+    .m-pro-10-5 {
+        flex: 0 0 87.5%;
+        max-width: 87.5%;
+    }
+    .m-pro-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .m-pro-o-1 {
+        margin-left: 8.33333%;
+    }
+    .m-pro-o-2 {
+        margin-left: 16.66667%;
+    }
+
+    .m-pro-o-3 {
+        margin-left: 25%;
+    }
+
+    .m-pro-o-4 {
+        margin-left: 33.33333%;
+    }
+
+    .m-pro-o-5 {
+        margin-left: 41.66667%;
+    }
+     .m-pro-6-7{
+        flex: 0  46%;
+        max-width: 46%;
+    }
+    .m-pro-o-6 {
+        margin-left: 50%;
+    }
+
+    .m-pro-o-7 {
+        margin-left: 58.33333%;
+    }
+
+    .m-pro-o-8 {
+        margin-left: 66.66667%;
+    }
+
+    .m-pro-o-9 {
+        margin-left: 75%;
+    }
+
+    .m-pro-o-10 {
+        margin-left: 83.33333%;
+    }
+
+    .m-pro-o-11 {
+        margin-left: 91.66667%;
+    }
+}
 /* Tablet - PC low resolution */ 
 
 .hide{

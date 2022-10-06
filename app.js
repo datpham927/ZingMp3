@@ -154,8 +154,8 @@ const app={
                                     search=index
                                     zingHeader.style.background=`url("./background/backroundThemes/${index}.jpg")no-repeat center/cover`
                                     zingHeader.style.boxShadow=`rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px`
-                                    $(".topic").style.background=`url(/background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
-                                    infoSearch.style.background=`url(/background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
+                                    $(".topic").style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
+                                    infoSearch.style.background=`url(../background/modalThemes/modalTheme3/theme${index}.jpg) center/cover no-repeat`
                                     $(".setting-list").style.background=`linear-gradient(0,rgba(225,225,225,0.1),rgba(225,225,225,0.2)),url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                                     if(index==3||index==4||index==5||index==6||index==7){
                                             isTheme=true
@@ -265,7 +265,7 @@ const app={
                 if(e.target.closest(".topic-theme-img img")){
                         const index=e.target.closest(".topic-theme").getAttribute("data-index")-1
                         indexImg=index
-                        $(".zing-sidebar-mb").style.background=`url("./background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
+                        $(".zing-sidebar-mb").style.background=`url("../background/modalThemes/modalTheme3/theme${index}.jpg") center/cover no-repeat`
                 }
             }
 
@@ -700,7 +700,7 @@ const app={
             if(targetInfoSearch||targetZingSearch){
                infoSearch.classList.remove("hide")
                ZingSearch.classList.add("action-search")
-               $(".action-search.zing-search").style.background=`url(/background/modalThemes/modalTheme3/theme${search}.jpg) center/cover no-repeat`
+               $(".action-search.zing-search").style.background=`url(../background/modalThemes/modalTheme3/theme${search}.jpg) center/cover no-repeat`
                const targetBody=e.target.closest(".recently .body")
                     if(targetBody){
                         const recentlyItem=e.target.closest(".recently-song-item")
@@ -1588,8 +1588,8 @@ const app={
                             item.querySelector(".individual-ctn2-song-item-img").classList.remove("action-pause-music")
                         }
                     })
-                   _this.loadColorPlaylistSong()
-                    _this.loadColorMusicDiscover()
+                        _this.loadColorPlaylistSong()
+                        _this.loadColorMusicDiscover()
                         _this.scrollToActiveSong($(".music-color"))
                         //  ---- Top 100 ----------
                         $$(".zingchart-body-list .zingchart-body-item").forEach((item,index)=>{
@@ -2488,7 +2488,7 @@ const app={
        const html =_this.songs.map((item,index)=>{
         if(index>22 && index<=34){
             return `
-                 <div class="l-4 m-6 c-12">
+                 <div class="l-4 m-6 c-12 m-pro-6">
                      <div class="the-song " >
                          <div class="the-song-include ${item.type}" data-index=${index}>
                              <div class="the-song-include-left">
@@ -2523,7 +2523,7 @@ const app={
        const album =_this.songs.map((item,index)=>{
         if( index>23 && index<=32){
             return `
-                    <div class="l-4 m-6 c-12">
+                    <div class="l-4 m-6 c-12 m-pro-6">
                     <div class="the-song discover-ctn2-album-song">
                         <div class="the-song-include discover-ctn2-album-include" data-index="${index}">
                             <div class="the-song-include-left">
