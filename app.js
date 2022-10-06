@@ -1625,7 +1625,7 @@ const app={
                                     item.querySelector(".the-song-include-img").classList.remove("action-play-music")
                                     item.querySelector(".the-song-include-img").classList.add("action-pause-music")
                                 }
-                            })
+                        })
                             
                             if(_this.changerMusic){
                                 listSongs[currentIndex].querySelector(".individual-ctn2-song-item-img").classList.add("action-pause-music")
@@ -1679,7 +1679,14 @@ const app={
                             allPlayList==false
                         }else{
                             _this.loadPlayListTop_bottom()
-                        }                   
+                        }            
+                        $$(".the-song-include.free").forEach(item=>{
+                            let index=item.getAttribute("data-index")
+                            if(index==currentIndex){
+                                    item.querySelector(".the-song-include-img").classList.add("action-play-music")
+                                    item.querySelector(".the-song-include-img").classList.remove("action-pause-music")
+                                }
+                        })       
                         if(_this.changerMusic){
                             listSongs[currentIndex].querySelector(".individual-ctn2-song-item-img").classList.add("action-play-music")
                             listSongs[currentIndex].querySelector(".individual-ctn2-song-item-img").classList.remove("action-pause-music")
