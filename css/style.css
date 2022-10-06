@@ -563,7 +563,7 @@ html::-webkit-scrollbar{
     height: auto;
 }
 .individual-ctn2-img-second{
-    transform: translateX(-40%);
+    transform: translateX(-65px);
     opacity: 0.8;
     z-index: 3;
     width: 47%;
@@ -571,7 +571,7 @@ html::-webkit-scrollbar{
     top:73px;
 }
 .individual-ctn2-img-third{ 
-    transform: translateX(-107%);
+    transform: translateX(-128px);
     opacity: 0.6;
     z-index: 2;
     width: 35%;
@@ -579,7 +579,7 @@ html::-webkit-scrollbar{
     top: 93px
 } 
 .individual-ctn2-img-four{
-      transform: translateX(-200%);
+      transform: translateX(-180px);
       opacity: 0.3;
       z-index: 1;
       width: 26%;
