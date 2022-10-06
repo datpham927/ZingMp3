@@ -1512,7 +1512,7 @@ background-color: var(--background-while);
 .list-empty{
     text-align: center;
     font-size: 20px;
-    margin-top: 11vw;
+    margin-top: 50%;
 }
 @keyframes fadeIn {
         from{

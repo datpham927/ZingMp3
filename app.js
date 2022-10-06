@@ -487,6 +487,7 @@ const app={
             singer: 'Ngô Lan Hương, Cukak Remix',
             pathSong: './music/list-song/15.m4a',
             duration : '03:51',
+            type:"vip",
         },
 
 
@@ -505,6 +506,7 @@ const app={
             singer:"Thái Học",
             pathSong:"./music/list-song/lhdsl.mp3",
             duration:"05:43",
+            type:"vip",
             img:"https://tse2.mm.bing.net/th?id=OIP.wQ8YaC8YRnibBMiypyK0XwEsEs&pid=Api&P=0"
         },
         { 
