@@ -2371,11 +2371,12 @@ background-color: var(--background-while);
 }
 .zing-playlist-img{
     position: relative;
-   width: 306px;
-   height: 306px;
-   border-radius: 10px;
-   overflow: hidden;
-   transition: 0.6s linear;
+    width: 306px;
+    margin: auto;
+    height: 306px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.6s linear;
 }
 .action-rotate.zing-playlist-img{
     border-radius: 100%;
