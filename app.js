@@ -3303,6 +3303,8 @@ scChedule:[
     // --------- radio -------------
         this.startRadio()
         this.handleSeacrh()
+        console.log($(".discover-ctn1-img").clientWidth)
+
 
     }
 }

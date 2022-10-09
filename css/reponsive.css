@@ -850,6 +850,9 @@
     .zing-main{
         padding: 0 10%;
     }
+    .individual-ctn2-right{
+        height: 21vw;
+    }
     .background{
         background-image: url("../background/backroundThemes/2.jpg");
         background-repeat: no-repeat;
@@ -864,6 +867,9 @@
         background-image: url("../background/backroundThemes/2.jpg");
         background-repeat: no-repeat;
         background-size: auto;
+    }
+    .individual-ctn2-right{
+        height: 12vw;
     }
  
 }
