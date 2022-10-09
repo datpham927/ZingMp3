@@ -163,9 +163,6 @@
    .individual-ctn3-body{
         margin: 0 -10px;
    }
-   .individual-ctn4-img {
-        height: 14vw
-   }
    .individual-ctn4-Body{
         margin: 0 -20px;
    }
@@ -822,7 +819,7 @@
     }
     
     
-@media (min-width: 1500px){
+@media (min-width: 1500px) and (max-width: 2559px){
     .individual-ctn2-img-second{
         transform: translateX(-90px);
         opacity: 0.8;
@@ -861,43 +858,12 @@
 }
 @media (min-width: 2560px){
     .zing-main{
-        padding: 0 10%;
+        padding: 0 25%;
     }
     .background{
         background-image: url("../background/backroundThemes/2.jpg");
         background-repeat: no-repeat;
         background-size: auto;
     }
-    .individual-ctn2-img-first{
-        transform: translateX(0);
-        opacity: 1;
-        z-index:4;
-        width: 59%;
-        top:50px;
-        height: auto;
-    }
-    .individual-ctn2-img-second{
-        transform: translateX(-125px);
-        opacity: 0.8;
-        z-index: 3;
-        width: 47%;
-        height: auto;
-        top:90px;
-    }
-    .individual-ctn2-img-third{ 
-        transform: translateX(-250px);
-        opacity: 0.6;
-        z-index: 2;
-        width: 35%;
-        height: auto;
-        top: 125px
-    } 
-    .individual-ctn2-img-four{
-          transform: translateX(-350px);
-          opacity: 0.3;
-          z-index: 1;
-          width: 26%;
-          height: auto;
-          top: 150px
-    }
+ 
 }
