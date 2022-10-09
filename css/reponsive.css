@@ -866,7 +866,7 @@
     .background{
         background-image: url("../background/backroundThemes/2.jpg");
         background-repeat: no-repeat;
-        background-size: auto;
+        background-size: cover;
     }
     .individual-ctn2-right{
         height: 12vw;
