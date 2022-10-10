@@ -1876,6 +1876,7 @@ const app={
         const _this=this
         $(".zing-playList-right").ondblclick=function(e){
             const target=e.target.closest(".zing-playList-item")
+            _this.boolPlaylist=true
             if(target){
                 currentIndex=target.getAttribute("data-index")
                 _this.loadCurrentSong()
