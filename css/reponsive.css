@@ -856,7 +856,7 @@
     .background{
         background-image: url("../background/backroundThemes/2.jpg");
         background-repeat: no-repeat;
-        background-size: auto;
+        background-size: cover;
     }
 }
 @media (min-width: 2560px){
@@ -864,12 +864,19 @@
         padding: 0 25%;
     }
     .background{
-        background-image: url("../background/backroundThemes/2.jpg");
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: auto;
     }
     .individual-ctn2-right{
         height: 12vw;
     }
+ 
+}
+@media (min-width: 4000px){
+  
+    .background{
+        background-size: cover;
+    }
+    
  
 }
