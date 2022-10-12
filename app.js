@@ -736,7 +736,7 @@ const app={
                                               </div>
                                               <div class="individual-ctn2-song-title zingchart ">
                                                       <span class="color-title">${item.title}</span>
-                                                      <small class="color-small">${item.singer}</small>
+                                                      <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                                               </div>
                                           </div>
                                           <div class="zingchart-body-main  color-small c-0">
@@ -816,7 +816,7 @@ const app={
                                                 </div>
                                                 <div class="individual-ctn2-song-title zingchart ">
                                                         <span class="color-title">${item.title}</span>
-                                                        <small class="color-small">${item.singer}</small>
+                                                        <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                                                 </div>
                                             </div>
                                         <div class="zingchart-body-main  color-small c-0 l-0">
@@ -985,7 +985,7 @@ const app={
                             </div>
                             <div class="individual-ctn2-song-title">
                                     <span class="color-title">${item.title}</span>
-                                    <small class="color-small">${item.singer}</small>
+                                    <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                             </div>
                         </li>      
                     `
@@ -1012,7 +1012,7 @@ const app={
                                                 </div>
                                                 <div class="individual-ctn2-song-title zingchart ">
                                                         <span class="color-title">${item.title}</span>
-                                                        <small class="color-small">${item.singer}</small>
+                                                        <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                                                 </div>
                                             </div>
                                             <div class="zingchart-body-main  color-small c-0 l-0">
@@ -1098,7 +1098,7 @@ const app={
                             </div>
                             <div class="individual-ctn2-song-title">
                                     <span class="color-title">${item.title}</span>
-                                    <small class="color-small">${item.singer}</small>
+                                    <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                             </div>
                             <div class="zingchart-body-main  color-small c-0">
                                     <span class="title">${item.title}</span>
@@ -1158,7 +1158,7 @@ const app={
                             </div>
                             <div class="individual-ctn2-song-title zingchart ">
                                     <span class="color-title">${item.title}</span>
-                                    <small class="color-small">${item.singer}</small>
+                                    <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                             </div>
                         </div>
                         <div class="zingchart-body-main  color-small c-0">
@@ -1216,7 +1216,7 @@ const app={
                               </div>
                               <div class="individual-ctn2-song-title zingchart ">
                                       <span class="color-title">${item.title}</span>
-                                      <small class="color-small">${item.singer}</small>
+                                      <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                               </div>
                           </div>
                           <div class="zingchart-body-main  color-small c-0">
@@ -1278,7 +1278,7 @@ const app={
                           </div>
                           <div class="individual-ctn2-song-title zingchart ">
                                   <span class="color-title">${item.title}</span>
-                                  <small class="color-small">${item.singer}</small>
+                                  <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                           </div>
                       </div>
                       <div class="zingchart-body-main  color-small c-0">
@@ -2926,7 +2926,7 @@ const app={
                         </div>
                         <div class="individual-ctn2-song-title zingchart ">
                                 <span class="color-title">${item.title}</span>
-                                <small class="color-small">${item.singer}</small>
+                                <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                         </div>
                     </div>
                     <div class="zingchart-body-main  color-small c-0">
@@ -2985,7 +2985,7 @@ const app={
                         </div>
                         <div class="individual-ctn2-song-title zingchart-footer-title ">
                                 <span class="color-title">${item.title}</span>
-                                <small class="color-small">${item.singer}</small>
+                                <small class="color-small">${item.singer.split(',').map(i=>`<a class="singer color-small"href="">${i}</a>`)}</small>
                         </div>
                     </div>
                     <div class="zingchart-body-right">

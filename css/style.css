@@ -715,8 +715,17 @@ html::-webkit-scrollbar{
    display: flex;
    margin-top: 3px;
 }
+.individual-ctn2-song-title small a{
+    font-size: 12px;
+    text-decoration: none;
+}
+.individual-ctn2-song-title small a:hover{
+    color: #614DE5;
+    text-decoration: underline;
+}
 .individual-ctn2-song-title span,
 .individual-ctn2-song-title small{
+    display: flex;
     font-size: 12px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
