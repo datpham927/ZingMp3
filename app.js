@@ -1674,12 +1674,12 @@ const app={
                                 $$(".zingchart-body-left-song-item-img")[index].classList.remove("action-pause-music")
                             }
                         })
-                        if(allPlayList){
-                            _this.loadSongRight()
-                            allPlayList==false
-                        }else{
-                            _this.loadPlayListTop_bottom()
-                        }            
+                        // if(allPlayList){
+                        //     _this.loadSongRight()
+                        //     allPlayList==false
+                        // }else{
+                        //     _this.loadPlayListTop_bottom()
+                        // }            
                         $$(".the-song-include.free").forEach(item=>{
                             let index=item.getAttribute("data-index")
                             if(index==currentIndex){
