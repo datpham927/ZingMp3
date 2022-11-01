@@ -227,7 +227,6 @@ html::-webkit-scrollbar{
 
 .zing-left{
    display: flex;
-  
    width:100%;
    align-items: center;
    margin-left: 59px;
@@ -323,6 +322,8 @@ html::-webkit-scrollbar{
  font-size: 25px;
  margin-right: 10px;
  margin-left: 5px;
+ display: flex;
+ align-items: center;
 }
 .zing-search input{
     flex: 1;
@@ -334,7 +335,6 @@ html::-webkit-scrollbar{
 .zing-right{
   display: flex;
   margin: 0 59px;
- 
   align-items: center;
   text-align: center;
 }
