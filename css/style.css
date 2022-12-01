@@ -156,7 +156,6 @@ html::-webkit-scrollbar{
    font-size: 14px;
    text-align: center;
    padding: 20px 10px;
-
 }
 .zing-vip-title{
    display: block;
@@ -709,7 +708,6 @@ html::-webkit-scrollbar{
 .individual-ctn2-song-title{
     margin-left: 10px;
     flex: 1;
-    
 }
 .individual-ctn2-song-right{
    display: flex;
@@ -1384,7 +1382,6 @@ background-color: var(--background-while);
    justify-content: space-between;
    padding: 10px 23px 10px 30px;
    line-height: 40px;
-
 }
 .topic-header h1{
     font-size: 25px;
@@ -1426,12 +1423,7 @@ background-color: var(--background-while);
     height:auto;
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
-.topic-theme img{
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: 1s;
-}
+.topic-theme 
 .topic-theme:hover .topic-theme-img img{
     transform: scale(1.1);
  }
@@ -1439,19 +1431,7 @@ background-color: var(--background-while);
     font-size: 12px ;
     line-height: 30px;
 }
-.action-theme{
-   position: absolute;
-   width: 100%;
-   height: 100%;
-   top:0;
-   justify-content: center;
-   right: 0;
-   left: 0;
-   text-align: center;
-   padding-top: 20px;
-   background-color: var(--background-btn);
-   display: none;
-}
+
 .theme-btn{
   background:none;
   border: 1px solid #dadada;
@@ -1761,6 +1741,7 @@ background-color: var(--background-while);
 .the-song-include-img.discover-ctn2-album-include-img{
     position: relative;
     display: flex;
+    flex-shrink: 0;
     width: 87px;
     height: 87px;
     margin-left: 22px;
