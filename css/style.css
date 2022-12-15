@@ -1683,7 +1683,7 @@ background-color: var(--background-while);
 
 .discover-ctn1-img-first{
     transform: translateX(-200%);
-    z-index: 4;
+    z-index:2;
     opacity:2
 }
 .discover-ctn1-img-second{
