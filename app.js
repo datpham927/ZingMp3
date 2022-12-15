@@ -1810,6 +1810,7 @@ const app = {
     audio.onplay = function () {
       animationImg.play();
       animationImg_mb.play();
+
       if (_this.boolPlaylist) {
         $(".zing-playlist-btn").classList.add("action-playlist-btn");
       } else {
@@ -1836,6 +1837,7 @@ const app = {
             .classList.remove("action-pause-music");
         }
       });
+      _this.loadPlayListTop_bottom();
       _this.loadColorPlaylistSong();
       _this.loadColorMusicDiscover();
       _this.scrollToActiveSong($(".music-color"));
@@ -1851,12 +1853,12 @@ const app = {
           );
         }
       });
-      // if(allPlayList){
-      //     _this.loadSongRight()
-      //     allPlayList==false
-      // }else{
-      //     _this.loadPlayListTop_bottom()
-      // }
+      if (allPlayList) {
+        _this.loadSongRight();
+        allPlayList == false;
+      } else {
+        _this.loadPlayListTop_bottom();
+      }
       $$(".the-song-include.free").forEach((item) => {
         let index = item.getAttribute("data-index");
         if (index == currentIndex) {
@@ -2191,9 +2193,9 @@ const app = {
     $(".playlist-content").classList.remove("hide");
     $(".playlist-content-end").classList.add("hide");
     $(".playlist-content span").style.color = "white";
-    this.songs.forEach((item, index) => {
+    _this.songs.forEach((item, index) => {
       if (index <= currentIndex) {
-        const html = this.songs.map(function (item, index) {
+        const html = _this.songs.map(function (item, index) {
           return index <= currentIndex && index <= 22
             ? `<li class="song-item song-item-right ${
                 audio.play() && index == currentIndex
@@ -2228,7 +2230,7 @@ const app = {
         });
         $(".list-song-body-top").innerHTML = html.join(" ");
       } else {
-        const html = this.songs.map(function (item, index) {
+        const html = _this.songs.map(function (item, index) {
           return index > currentIndex && index <= 22
             ? `<li class="song-item song-item-right" data-index=${index}> 
                             <div class="individual-ctn2-song-item-img">
@@ -2275,9 +2277,10 @@ const app = {
     var number_playList = 0;
     arr_PlayList.forEach((item, index) => {
       number_playList = index;
+      console.log(currentIndex);
       if (item <= currentIndex) {
         const html = arr_PlayList.map(function (item) {
-          return item <= currentIndex
+          return item < currentIndex
             ? `<li class="song-item song-item-right ${
                 audio.play() && item == currentIndex
                   ? "music-color-playlist"
@@ -2329,7 +2332,7 @@ const app = {
                                         <small class="color-small">${_this.songs[item].singer}</small>
                                 </div>
                             </li>  `
-            : "";
+            : " ";
         });
         $(".list-song-body-bottom").innerHTML = html.join(" ");
       }
